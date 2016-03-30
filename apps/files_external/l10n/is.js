@@ -1,0 +1,27 @@
+OC.L10N.register(
+    "files_external",
+    {
+    "Personal" : "Um mig",
+    "Grant access" : "Veita aðgengi",
+    "Access granted" : "Aðgengi veitt",
+    "Enable encryption" : "Virkja dulritun",
+    "Saved" : "Vistað",
+    "Username" : "Notendanafn",
+    "Password" : "Lykilorð",
+    "Save" : "Vista",
+    "None" : "Ekkert",
+    "Port" : "Gátt",
+    "WebDAV" : "WebDAV",
+    "URL" : "URL",
+    "Host" : "Netþjónn",
+    "Local" : "Staðvært",
+    "Location" : "Staðsetning",
+    "ownCloud" : "ownCloud",
+    "Share" : "Deila",
+    "Name" : "Nafn",
+    "External Storage" : "Ytri gagnageymsla",
+    "Folder name" : "Nafn möppu",
+    "Configuration" : "Uppsetning",
+    "Delete" : "Eyða"
+},
+"nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");
