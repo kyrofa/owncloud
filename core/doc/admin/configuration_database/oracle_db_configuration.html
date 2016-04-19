@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,10 +7,10 @@
     
     <title>Oracle Database Setup &mdash; ownCloud 9.0 Server Administration Manual 9.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,87 +24,41 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="ownCloud 9.0 Server Administration Manual 9.0 documentation" href="../contents.html" />
     <link rel="up" title="Database Configuration" href="index.html" />
     <link rel="next" title="Mimetypes Management" href="../configuration_mimetypes/index.html" />
     <link rel="prev" title="Database Configuration" href="linux_database_configuration.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    console.log("HERE");
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    patchToc($("ul.globaltoc"), 2);
-    patchToc($("ul.localtoc"), 2);
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
 
   </head>
   <body role="document">
-  
 
-<div class="container">
-  <div class="content">
-    <div class="page-header">
-      <h1><a href="../contents.html">ownCloud 9.0 Server Administration Manual</a></h1>
 
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-5 col-md-offset-7">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
     </div>
     
 			<div class="row">
-				<div class="span3">
+				<div class="col-md-3">
 					<div class="sidebar">
-						<div class="well">
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
@@ -142,20 +95,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_server_branding/index.html">Enterprise Server Branding (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_external_storage/index.html">External Storage (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_user_management/index.html">User Management (ES only)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../enterprise_files_drop/index.html">Enabling Anonymous Uploads with Files Drop (ES Only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../enterprise_file_management/index.html">Enterprise File Management (ES Only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_logging/index.html">Enterprise Logging Apps (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_firewall/index.html">Enterprise Firewall (ES only)</a></li>
 </ul>
 
 								</ul>
 							</div>
-						</div>
 					</div>
 				</div>
         
 
-				<div class="span9">
+				<div class="col-md-9">
 					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="linux_database_configuration.html" title="Previous Chapter: Database Configuration"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Database Conf...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../configuration_mimetypes/index.html" title="Next Chapter: Mimetypes Management"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Mimetypes Man... &raquo;</span>
+    </a>
+  </li>
+</ul>
 						
   <div class="section" id="oracle-database-setup">
 <h1>Oracle Database Setup<a class="headerlink" href="#oracle-database-setup" title="Permalink to this headline">¶</a></h1>
@@ -187,9 +150,9 @@ ownCloud with all of the prerequisites.</p>
 <p>Step one, if it has not already been completed by your <abbr title="DataBase Administrator">DBA</abbr>, provision a user
 space on the Oracle instance for ownCloud.  This can be done by logging in as a
 DBA and running the script below:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">owncloud</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="n">password</span><span class="p">;</span>
-<span class="k">ALTER</span> <span class="k">USER</span> <span class="n">owncloud</span> <span class="k">DEFAULT</span> <span class="n">TABLESPACE</span> <span class="n">users</span> <span class="k">TEMPORARY</span> <span class="n">TABLESPACE</span> <span class="n">temp</span> <span class="n">QUOTA</span> <span class="n">unlimited</span> <span class="k">ON</span> <span class="n">users</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">create</span> <span class="k">session</span><span class="p">,</span> <span class="k">create</span> <span class="k">table</span><span class="p">,</span> <span class="k">create</span> <span class="k">procedure</span><span class="p">,</span> <span class="k">create</span> <span class="n">sequence</span><span class="p">,</span> <span class="k">create</span> <span class="k">trigger</span><span class="p">,</span> <span class="k">create</span> <span class="k">view</span><span class="p">,</span> <span class="k">create</span> <span class="n">synonym</span><span class="p">,</span> <span class="k">alter</span> <span class="k">session</span> <span class="k">TO</span> <span class="n">owncloud</span><span class="p">;</span>
+<div class="highlight-python"><div class="highlight"><pre>CREATE USER owncloud IDENTIFIED BY password;
+ALTER USER owncloud DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp QUOTA unlimited ON users;
+GRANT create session, create table, create procedure, create sequence, create trigger, create view, create synonym, alter session TO owncloud;
 </pre></div>
 </div>
 <p>Substitute an actual password for <code class="docutils literal"><span class="pre">password</span></code>.  Items like TableSpace, Quota etc. will be determined by your DBA.</p>
@@ -326,20 +289,20 @@ In this example the users table space (as is seen in the user creation script ab
 <h3>Configuration File<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h3>
 <p>Assuming all of the steps have been followed to completion, the first run wizard should complete successfully, and an operating instance of ownCloud should appear.</p>
 <p>The configuration file should look something like this:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
-<span class="nv">$CONFIG</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span>
-<span class="s1">&#39;instanceid&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;abcdefgh&#39;</span><span class="p">,</span>
-<span class="s1">&#39;passwordsalt&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;01234567890123456789&#39;</span><span class="p">,</span>
-<span class="s1">&#39;datadirectory&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/var/data&#39;</span><span class="p">,</span>
-<span class="s1">&#39;dbtype&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;oci&#39;</span><span class="p">,</span>
-<span class="s1">&#39;version&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;8.2.x.y&#39;</span><span class="p">,</span>
-<span class="s1">&#39;dbname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;orcl&#39;</span><span class="p">,</span>
-<span class="s1">&#39;dbhost&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.1.57&#39;</span><span class="p">,</span>
-<span class="s1">&#39;dbtableprefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;oc_&#39;</span><span class="p">,</span>
-<span class="s1">&#39;dbuser&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;owncloud1&#39;</span><span class="p">,</span>
-<span class="s1">&#39;dbpassword&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;********&#39;</span><span class="p">,</span>
-<span class="s1">&#39;installed&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<span class="p">);</span>
+<div class="highlight-python"><div class="highlight"><pre>&lt;?php
+$CONFIG = array (
+&#39;instanceid&#39; =&gt; &#39;abcdefgh&#39;,
+&#39;passwordsalt&#39; =&gt; &#39;01234567890123456789&#39;,
+&#39;datadirectory&#39; =&gt; &#39;/var/data&#39;,
+&#39;dbtype&#39; =&gt; &#39;oci&#39;,
+&#39;version&#39; =&gt; &#39;8.2.x.y&#39;,
+&#39;dbname&#39; =&gt; &#39;orcl&#39;,
+&#39;dbhost&#39; =&gt; &#39;192.168.1.57&#39;,
+&#39;dbtableprefix&#39; =&gt; &#39;oc_&#39;,
+&#39;dbuser&#39; =&gt; &#39;owncloud1&#39;,
+&#39;dbpassword&#39; =&gt; &#39;********&#39;,
+&#39;installed&#39; =&gt; true,
+);
 </pre></div>
 </div>
 </div>
@@ -347,10 +310,21 @@ In this example the users table space (as is seen in the user creation script ab
 </div>
 
 
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="linux_database_configuration.html" title="Previous Chapter: Database Configuration"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Database Conf...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../configuration_mimetypes/index.html" title="Next Chapter: Mimetypes Management"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Mimetypes Man... &raquo;</span>
+    </a>
+  </li>
+</ul>
 					</div>
 				</div>
 			</div>
-    
+  </main>  
   </div>
 </div>
   </body>

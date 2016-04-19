@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,10 +7,10 @@
     
     <title>Warnings on Admin Page &mdash; ownCloud 9.0 Server Administration Manual 9.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,87 +24,41 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="ownCloud 9.0 Server Administration Manual 9.0 documentation" href="../contents.html" />
     <link rel="up" title="ownCloud Server Configuration" href="index.html" />
     <link rel="next" title="Using the occ Command" href="occ_command.html" />
     <link rel="prev" title="ownCloud Server Configuration" href="index.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    console.log("HERE");
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    patchToc($("ul.globaltoc"), 2);
-    patchToc($("ul.localtoc"), 2);
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
 
   </head>
   <body role="document">
-  
 
-<div class="container">
-  <div class="content">
-    <div class="page-header">
-      <h1><a href="../contents.html">ownCloud 9.0 Server Administration Manual</a></h1>
 
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-5 col-md-offset-7">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
     </div>
     
 			<div class="row">
-				<div class="span3">
+				<div class="col-md-3">
 					<div class="sidebar">
-						<div class="well">
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
@@ -125,9 +78,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#the-test-with-getenv-path-only-returns-an-empty-response">The test with getenv(&#8220;PATH&#8221;) only returns an empty response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-strict-transport-security-http-header-is-not-configured">The &#8220;Strict-Transport-Security&#8221; HTTP header is not configured</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dev-urandom-is-not-readable-by-php">/dev/urandom is not readable by PHP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#your-web-server-is-not-yet-set-up-properly-to-allow-file-synchronization">Your web server is not yet set up properly to allow file synchronization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#your-web-server-is-not-yet-set-up-properly-to-allow-file-synchronization">Your Web server is not yet set up properly to allow file synchronization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#outdated-nss-openssl-version">Outdated NSS / OpenSSL version</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#your-web-server-is-not-set-up-properly-to-resolve-well-known-caldav-or-well-known-carddav">Your web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#your-web-server-is-not-set-up-properly-to-resolve-well-known-caldav-or-well-known-carddav">Your Web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#some-files-have-not-passed-the-integrity-check">Some files have not passed the integrity check</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="occ_command.html">Using the occ Command</a></li>
@@ -165,20 +119,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_server_branding/index.html">Enterprise Server Branding (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_external_storage/index.html">External Storage (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_user_management/index.html">User Management (ES only)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../enterprise_files_drop/index.html">Enabling Anonymous Uploads with Files Drop (ES Only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../enterprise_file_management/index.html">Enterprise File Management (ES Only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_logging/index.html">Enterprise Logging Apps (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_firewall/index.html">Enterprise Firewall (ES only)</a></li>
 </ul>
 
 								</ul>
 							</div>
-						</div>
 					</div>
 				</div>
         
 
-				<div class="span9">
+				<div class="col-md-9">
 					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: ownCloud Server Configuration"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; ownCloud Serv...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="occ_command.html" title="Next Chapter: Using the occ Command"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Using the occ... &raquo;</span>
+    </a>
+  </li>
+</ul>
 						
   <div class="section" id="warnings-on-admin-page">
 <h1>Warnings on Admin Page<a class="headerlink" href="#warnings-on-admin-page" title="Permalink to this headline">¶</a></h1>
@@ -223,11 +187,11 @@ to correctly configure your environment for transactional file locking.</p>
 server to require using HTTPS instead.&#8221; Please take this warning seriously;
 using HTTPS is a fundamental security measure. You must configure your Web
 server to support it, and then there are some settings in the <strong>Security</strong>
-section of your ownCloud Admin page to enable. The following manual pages
+section of your ownCloud Admin page to enable. The following pages
 describe how to enable HTTPS on the Apache and Nginx Web servers.</p>
 <p><a class="reference internal" href="../installation/source_installation.html#enabling-ssl-label"><span>Enabling SSL</span></a> (on Apache)</p>
 <p><a class="reference internal" href="harden_server.html#use-https-label"><span>Use HTTPS</span></a></p>
-<p><a class="reference internal" href="../installation/nginx_configuration.html#nginx-configuration-example"><span>Nginx Configuration</span></a></p>
+<p><a class="reference external" href="https://github.com/owncloud/documentation/wiki/NGINX-Configuration">NGINX configuration</a></p>
 </div>
 <div class="section" id="the-test-with-getenv-path-only-returns-an-empty-response">
 <h2>The test with getenv(&#8220;PATH&#8221;) only returns an empty response<a class="headerlink" href="#the-test-with-getenv-path-only-returns-an-empty-response" title="Permalink to this headline">¶</a></h2>
@@ -250,7 +214,7 @@ Further information can be found in our documentation.&#8221;</p>
 at the <a class="reference internal" href="harden_server.html#dev-urandom-label"><span>Give PHP read access to /dev/urandom</span></a> documentation.</p>
 </div>
 <div class="section" id="your-web-server-is-not-yet-set-up-properly-to-allow-file-synchronization">
-<h2>Your web server is not yet set up properly to allow file synchronization<a class="headerlink" href="#your-web-server-is-not-yet-set-up-properly-to-allow-file-synchronization" title="Permalink to this headline">¶</a></h2>
+<h2>Your Web server is not yet set up properly to allow file synchronization<a class="headerlink" href="#your-web-server-is-not-yet-set-up-properly-to-allow-file-synchronization" title="Permalink to this headline">¶</a></h2>
 <p>&#8220;Your web server is not yet set up properly to allow file synchronization because
 the WebDAV interface seems to be broken.&#8221;</p>
 <p>At the ownCloud community forums a larger <a class="reference external" href="https://forum.owncloud.org/viewtopic.php?f=17&amp;t=7536">FAQ</a>
@@ -272,17 +236,32 @@ and an heuristic is running the test which actually reproduces the bug. There
 are distributions such as RHEL/CentOS which have this backport still <a class="reference external" href="https://bugzilla.redhat.com/show_bug.cgi?id=1241172">pending</a>.</p>
 </div>
 <div class="section" id="your-web-server-is-not-set-up-properly-to-resolve-well-known-caldav-or-well-known-carddav">
-<h2>Your web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/<a class="headerlink" href="#your-web-server-is-not-set-up-properly-to-resolve-well-known-caldav-or-well-known-carddav" title="Permalink to this headline">¶</a></h2>
-<p>Both URLs needs to be correctly redirected to the DAV endpoint of ownCloud. Please
+<h2>Your Web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/<a class="headerlink" href="#your-web-server-is-not-set-up-properly-to-resolve-well-known-caldav-or-well-known-carddav" title="Permalink to this headline">¶</a></h2>
+<p>Both URLs need to be correctly redirected to the DAV endpoint of ownCloud. Please
 refer to <a class="reference internal" href="../issues/general_troubleshooting.html#service-discovery-label"><span>Service discovery</span></a> for more info.</p>
 </div>
+<div class="section" id="some-files-have-not-passed-the-integrity-check">
+<h2>Some files have not passed the integrity check<a class="headerlink" href="#some-files-have-not-passed-the-integrity-check" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to the <a class="reference internal" href="../issues/code_signing.html#code-signing-fix-warning-label"><span>Fixing Invalid Code Integrity Messages</span></a> documentation how to debug this issue.</p>
+</div>
 </div>
 
 
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: ownCloud Server Configuration"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; ownCloud Serv...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="occ_command.html" title="Next Chapter: Using the occ Command"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Using the occ... &raquo;</span>
+    </a>
+  </li>
+</ul>
 					</div>
 				</div>
 			</div>
-    
+  </main>  
   </div>
 </div>
   </body>

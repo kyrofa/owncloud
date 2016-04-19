@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "01a2beb82c7d1d41a162c7a0d4f92d67",
-    "content-hash": "513a3dea6f9343315cafeff57cd53ad6",
+    "hash": "747aa1bf8588aa51e9f8d6bc6ebee284",
+    "content-hash": "2e338b6fe65de0e3135657efcf586920",
     "packages": [
         {
             "name": "bantu/ini-get-wrapper",
@@ -907,23 +907,24 @@
         },
         {
             "name": "icewind/streams",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/icewind1991/Streams.git",
-                "reference": "1cca87c499b0a50056468b94479effd5b4b390cb"
+                "reference": "9ca40274645a967ecc3408b0ca2e6255ead1d1d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/icewind1991/Streams/zipball/1cca87c499b0a50056468b94479effd5b4b390cb",
-                "reference": "1cca87c499b0a50056468b94479effd5b4b390cb",
+                "url": "https://api.github.com/repos/icewind1991/Streams/zipball/9ca40274645a967ecc3408b0ca2e6255ead1d1d3",
+                "reference": "9ca40274645a967ecc3408b0ca2e6255ead1d1d3",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3"
             },
             "require-dev": {
-                "satooshi/php-coveralls": "dev-master"
+                "phpunit/phpunit": "^4.8",
+                "satooshi/php-coveralls": "v1.0.0"
             },
             "type": "library",
             "autoload": {
@@ -943,7 +944,7 @@
                 }
             ],
             "description": "A set of generic stream wrappers",
-            "time": "2015-09-01 14:56:35"
+            "time": "2016-03-17 12:32:25"
         },
         {
             "name": "interfasys/lognormalizer",
@@ -1145,7 +1146,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JamesHeinrich/getID3/zipball/087b7270a6cff16f32a66bcb6af58866ad19dd07",
+                "url": "https://api.github.com/repos/JamesHeinrich/getID3/zipball/5c85d440b6c7d5ffdc4b8d8d6fdd37c6e244b3af",
                 "reference": "afbdaa044a9a0a9dff2f800bd670e231b3ec99b2",
                 "shasum": ""
             },
@@ -2197,16 +2198,16 @@
         },
         {
             "name": "sabre/dav",
-            "version": "3.0.7",
+            "version": "3.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fruux/sabre-dav.git",
-                "reference": "294b6e133f3b4cf644b9637a734b53f82d46d7f7"
+                "reference": "69c5080ae689247d06a3c30fba05aba22bb81cf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fruux/sabre-dav/zipball/294b6e133f3b4cf644b9637a734b53f82d46d7f7",
-                "reference": "294b6e133f3b4cf644b9637a734b53f82d46d7f7",
+                "url": "https://api.github.com/repos/fruux/sabre-dav/zipball/69c5080ae689247d06a3c30fba05aba22bb81cf5",
+                "reference": "69c5080ae689247d06a3c30fba05aba22bb81cf5",
                 "shasum": ""
             },
             "require": {
@@ -2274,7 +2275,7 @@
                 "framework",
                 "iCalendar"
             ],
-            "time": "2016-01-12 22:41:05"
+            "time": "2016-03-12 22:36:59"
         },
         {
             "name": "sabre/event",

@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,10 +7,10 @@
     
     <title>User Authentication with LDAP &mdash; ownCloud 9.0 Server Administration Manual 9.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,87 +24,41 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="ownCloud 9.0 Server Administration Manual 9.0 documentation" href="../contents.html" />
     <link rel="up" title="User Management" href="index.html" />
     <link rel="next" title="LDAP User Cleanup" href="user_auth_ldap_cleanup.html" />
     <link rel="prev" title="User Authentication with IMAP, SMB, and FTP" href="user_auth_ftp_smb_imap.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    console.log("HERE");
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    patchToc($("ul.globaltoc"), 2);
-    patchToc($("ul.localtoc"), 2);
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
 
   </head>
   <body role="document">
-  
 
-<div class="container">
-  <div class="content">
-    <div class="page-header">
-      <h1><a href="../contents.html">ownCloud 9.0 Server Administration Manual</a></h1>
 
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-5 col-md-offset-7">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
     </div>
     
 			<div class="row">
-				<div class="span3">
+				<div class="col-md-3">
 					<div class="sidebar">
-						<div class="well">
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
@@ -154,20 +107,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_server_branding/index.html">Enterprise Server Branding (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_external_storage/index.html">External Storage (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_user_management/index.html">User Management (ES only)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../enterprise_files_drop/index.html">Enabling Anonymous Uploads with Files Drop (ES Only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../enterprise_file_management/index.html">Enterprise File Management (ES Only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_logging/index.html">Enterprise Logging Apps (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_firewall/index.html">Enterprise Firewall (ES only)</a></li>
 </ul>
 
 								</ul>
 							</div>
-						</div>
 					</div>
 				</div>
         
 
-				<div class="span9">
+				<div class="col-md-9">
 					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="user_auth_ftp_smb_imap.html" title="Previous Chapter: User Authentication with IMAP, SMB, and FTP"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; User Authenti...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="user_auth_ldap_cleanup.html" title="Next Chapter: LDAP User Cleanup"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">LDAP User Cle... &raquo;</span>
+    </a>
+  </li>
+</ul>
 						
   <div class="section" id="user-authentication-with-ldap">
 <h1>User Authentication with LDAP<a class="headerlink" href="#user-authentication-with-ldap" title="Permalink to this headline">¶</a></h1>
@@ -194,12 +157,13 @@ required</li>
 <li>Support for primary groups in Active Directory</li>
 <li>Auto-detection of LDAP attributes such as base DN, email, and the LDAP server
 port number</li>
-<li>Only read access to your LDAP (edit or delete of users on your LDAP is not supported)</li>
+<li>Only read access to your LDAP (edit or delete of users on your LDAP is not
+supported)</li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The LDAP app is not compatible with the <code class="docutils literal"><span class="pre">User</span> <span class="pre">backend</span> <span class="pre">using</span> <span class="pre">remote</span> <span class="pre">HTTP</span> <span class="pre">servers</span></code> app.
-You cannot use both of them at the same time.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The LDAP app is not compatible with the <code class="docutils literal"><span class="pre">User</span> <span class="pre">backend</span> <span class="pre">using</span> <span class="pre">remote</span>
+<span class="pre">HTTP</span> <span class="pre">servers</span></code> app. You cannot use both of them at the same time.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -222,7 +186,7 @@ authentication, enter your credentials on this tab. ownCloud will then attempt
 to auto-detect the server&#8217;s port and base DN. The base DN and port are
 mandatory, so if ownCloud cannot detect them you must enter them manually.</p>
 <div class="figure">
-<img alt="../_images/ldap-wizard-1-server.png" src="../_images/ldap-wizard-1-server.png" />
+<img alt="LDAP wizard, server tab" src="../_images/ldap-wizard-1-server.png" />
 </div>
 <dl class="docutils">
 <dt>Server configuration:</dt>
@@ -276,15 +240,12 @@ Host, and you must enter it manually if ownCloud does not detect it.</p>
 <div class="section" id="user-filter">
 <h3>User Filter<a class="headerlink" href="#user-filter" title="Permalink to this headline">¶</a></h3>
 <p>Use this to control which LDAP users are listed as ownCloud users on your
-ownCloud server. In order to control which LDAP users can login to your
-ownCloud
-server use the Login filter. Those LDAP users who have access but are not
-listed
-as users (if there are any) will be hidden users. You may bypass the form
-fields
+ownCloud server. In order to control which LDAP users can login to your ownCloud
+server use the Login filter. Those LDAP users who have access but are not listed
+as users (if there are any) will be hidden users. You may bypass the form fields
 and enter a raw LDAP filter if you prefer.</p>
 <div class="figure">
-<img alt="../_images/ldap-wizard-2-user.png" src="../_images/ldap-wizard-2-user.png" />
+<img alt="User filter" src="../_images/ldap-wizard-2-user.png" />
 </div>
 <dl class="docutils">
 <dt>only those object classes:</dt>
@@ -317,17 +278,14 @@ listed in ownCloud. The number updates automatically after any changes.</dd>
 <div class="section" id="login-filter">
 <h3>Login Filter<a class="headerlink" href="#login-filter" title="Permalink to this headline">¶</a></h3>
 <p>The settings in the Login Filter tab determine which LDAP users can log in to
-your
-ownCloud system and which attribute or attributes the provided login name is
-matched
-against (e.g. LDAP/AD username, email address). You may select multiple user
-details.
-(You may bypass the form fields and enter a raw LDAP filter if you prefer.)</p>
-<p>You may override your User Filter settings on the User Filter tab by using a
-raw
+your ownCloud system and which attribute or attributes the provided login name
+is matched against (e.g. LDAP/AD username, email address). You may select
+multiple user details. (You may bypass the form fields and enter a raw LDAP
+filter if you prefer.)</p>
+<p>You may override your User Filter settings on the User Filter tab by using a raw
 LDAP filter.</p>
 <div class="figure">
-<img alt="../_images/ldap-wizard-3-login.png" src="../_images/ldap-wizard-3-login.png" />
+<img alt="Login filter" src="../_images/ldap-wizard-3-login.png" />
 </div>
 <dl class="docutils">
 <dt>LDAP Username:</dt>
@@ -371,7 +329,7 @@ dc=example,dc=com)(|(uid=%uid)(mail=%uid)))
 group filter tab determine which groups will be available in ownCloud. You may
 also elect to enter a raw LDAP filter instead.</p>
 <div class="figure">
-<img alt="../_images/ldap-wizard-4-group.png" src="../_images/ldap-wizard-4-group.png" />
+<img alt="Group filter" src="../_images/ldap-wizard-4-group.png" />
 </div>
 <dl class="docutils">
 <dt>only those object classes:</dt>
@@ -412,9 +370,8 @@ configure replica hosts, and various performance-enhancing options.</p>
 </ul>
 <div class="section" id="connection-settings">
 <h3>Connection Settings<a class="headerlink" href="#connection-settings" title="Permalink to this headline">¶</a></h3>
-<div class="figure" id="id1">
-<img alt="../_images/ldap-advanced-1-connection.png" src="../_images/ldap-advanced-1-connection.png" />
-<p class="caption"><span class="caption-text">LDAP Advanced Settings, section Connection Settings</span></p>
+<div class="figure">
+<img alt="Advanced settings" src="../_images/ldap-advanced-1-connection.png" />
 </div>
 <dl class="docutils">
 <dt>Configuration Active:</dt>
@@ -463,10 +420,9 @@ lifetime of 15s or so, rather than completely eliminating the cache.</p>
 operates.</p>
 </div>
 <div class="section" id="directory-settings">
-<h3>Directory Settings<a class="headerlink" href="#directory-settings" title="Permalink to this headline">¶</a></h3>
-<div class="figure" id="id2">
-<img alt="../_images/ldap-advanced-2-directory.png" src="../_images/ldap-advanced-2-directory.png" />
-<p class="caption"><span class="caption-text">LDAP Advanced Settings, section Directory Settings</span></p>
+<span id="ldap-directory-settings"></span><h3>Directory Settings<a class="headerlink" href="#directory-settings" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<img alt="Directory settings." src="../_images/ldap-advanced-2-directory.png" />
 </div>
 <dl class="docutils">
 <dt>User Display Name Field:</dt>
@@ -475,6 +431,10 @@ operates.</p>
 <li>Example: <em>displayName</em></li>
 </ul>
 </dd>
+<dt>2nd User Display Name Field:</dt>
+<dd>An optional second attribute displayed in brackets after the display name,
+for example using the <code class="docutils literal"><span class="pre">mail</span></code> attribute displays as <code class="docutils literal"><span class="pre">Molly</span> <span class="pre">Foo</span>
+<span class="pre">(molly&#64;example.com)</span></code>.</dd>
 <dt>Base User Tree:</dt>
 <dd><p class="first">The base DN of LDAP, from where all users can be reached. This must be a
 complete DN, regardless of what you have entered for your Base DN in the
@@ -554,9 +514,8 @@ have a very valid reason and know what you are doing.</p>
 </div>
 <div class="section" id="special-attributes">
 <h3>Special Attributes<a class="headerlink" href="#special-attributes" title="Permalink to this headline">¶</a></h3>
-<div class="figure" id="id3">
-<img alt="../_images/ldap-advanced-3-attributes.png" src="../_images/ldap-advanced-3-attributes.png" />
-<p class="caption"><span class="caption-text">LDAP Advanced Settings, section Special Attributes</span></p>
+<div class="figure">
+<img alt="Special Attributes." src="../_images/ldap-advanced-3-attributes.png" />
 </div>
 <dl class="docutils">
 <dt>Quota Field:</dt>
@@ -602,7 +561,7 @@ attribute value. The attribute can also return an absolute path, e.g.
 <div class="section" id="expert-settings">
 <h2>Expert Settings<a class="headerlink" href="#expert-settings" title="Permalink to this headline">¶</a></h2>
 <div class="figure">
-<img alt="../_images/ldap-expert.png" src="../_images/ldap-expert.png" />
+<img alt="Expert settings." src="../_images/ldap-expert.png" />
 </div>
 <p>In the Expert Settings fundamental behavior can be adjusted to your needs. The
 configuration should be well-tested before starting production use.</p>
@@ -678,9 +637,8 @@ has a photo stored in the <em>jpegPhoto</em> or <em>thumbnailPhoto</em> attribut
 server, it will be used as their avatar. In this case the user cannot alter their
 avatar (on their Personal page) as it must be changed in LDAP. <em>jpegPhoto</em> is
 preferred over <em>thumbnailPhoto</em>.</p>
-<div class="figure" id="id4">
-<img alt="../_images/ldap-fetched-avatar.png" src="../_images/ldap-fetched-avatar.png" />
-<p class="caption"><span class="caption-text">Profile picture fetched from LDAP</span></p>
+<div class="figure">
+<img alt="Profile picture fetched from LDAP." src="../_images/ldap-fetched-avatar.png" />
 </div>
 <p>If the <em>jpegPhoto</em> or <em>thumbnailPhoto</em> attribute is not set or empty, then
 users can upload and manage their avatars on their ownCloud Personal pages.
@@ -797,10 +755,21 @@ avoid unnecessary connection attempts.</p>
 </div>
 
 
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="user_auth_ftp_smb_imap.html" title="Previous Chapter: User Authentication with IMAP, SMB, and FTP"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; User Authenti...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="user_auth_ldap_cleanup.html" title="Next Chapter: LDAP User Cleanup"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">LDAP User Cle... &raquo;</span>
+    </a>
+  </li>
+</ul>
 					</div>
 				</div>
 			</div>
-    
+  </main>  
   </div>
 </div>
   </body>

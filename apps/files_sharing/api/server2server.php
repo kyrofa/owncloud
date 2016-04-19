@@ -107,12 +107,12 @@ class Server2Server {
 
 				$declineAction = $notification->createAction();
 				$declineAction->setLabel('decline')
-					->setLink($urlGenerator->getAbsoluteURL('/ocs/v1.php/apps/files_sharing/api/v1/remote_shares/pending/' . $shareId), 'DELETE');
+					->setLink($urlGenerator->getAbsoluteURL($urlGenerator->linkTo('', 'ocs/v1.php/apps/files_sharing/api/v1/remote_shares/pending/' . $shareId)), 'DELETE');
 				$notification->addAction($declineAction);
 
 				$acceptAction = $notification->createAction();
 				$acceptAction->setLabel('accept')
-					->setLink($urlGenerator->getAbsoluteURL('/ocs/v1.php/apps/files_sharing/api/v1/remote_shares/pending/' . $shareId), 'POST');
+					->setLink($urlGenerator->getAbsoluteURL($urlGenerator->linkTo('', 'ocs/v1.php/apps/files_sharing/api/v1/remote_shares/pending/' . $shareId)), 'POST');
 				$notification->addAction($acceptAction);
 
 				$notificationManager->notify($notification);
@@ -178,7 +178,7 @@ class Server2Server {
 
 		if ($share) {
 			// userId must be set to the user who unshares
-			\OCP\Share::unshare($share['item_type'], $share['item_source'], $share['share_type'], null, $share['uid_owner']);
+			\OCP\Share::unshare($share['item_type'], $share['item_source'], $share['share_type'], $share['share_with'], $share['uid_owner']);
 
 			list($file, $link) = $this->getFile($share['uid_owner'], $share['file_source']);
 

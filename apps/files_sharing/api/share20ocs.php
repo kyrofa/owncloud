@@ -110,6 +110,7 @@ class Share20OCS {
 		} else {
 			$result['item_type'] = 'file';
 		}
+		$result['mimetype'] = $node->getMimeType();
 		$result['storage_id'] = $node->getStorage()->getId();
 		$result['storage'] = $node->getStorage()->getCache()->getNumericStorageId();
 		$result['item_source'] = $node->getId();
@@ -155,10 +156,15 @@ class Share20OCS {
 	 * @return \OC_OCS_Result
 	 */
 	public function getShare($id) {
+		if (!$this->shareManager->shareApiEnabled()) {
+			return new \OC_OCS_Result(null, 404, 'Share API is disabled');
+		}
+
 		// Try both our default, and our federated provider..
 		$share = null;
 
 		// First check if it is an internal share.
+
 		try {
 			$share = $this->shareManager->getShareById('ocinternal:'.$id);
 		} catch (ShareNotFound $e) {
@@ -197,6 +203,10 @@ class Share20OCS {
 	 * @return \OC_OCS_Result
 	 */
 	public function deleteShare($id) {
+		if (!$this->shareManager->shareApiEnabled()) {
+			return new \OC_OCS_Result(null, 404, 'Share API is disabled');
+		}
+
 		// Try both our default and our federated provider
 		$share = null;
 
@@ -234,6 +244,10 @@ class Share20OCS {
 	 */
 	public function createShare() {
 		$share = $this->shareManager->newShare();
+
+		if (!$this->shareManager->shareApiEnabled()) {
+			return new \OC_OCS_Result(null, 404, 'Share API is disabled');
+		}
 
 		// Verify path
 		$path = $this->request->getParam('path', null);
@@ -291,6 +305,10 @@ class Share20OCS {
 			$share->setSharedWith($shareWith);
 			$share->setPermissions($permissions);
 		} else if ($shareType === \OCP\Share::SHARE_TYPE_GROUP) {
+			if (!$this->shareManager->allowGroupSharing()) {
+				return new \OC_OCS_Result(null, 404, 'group sharing is disabled by the administrator');
+			}
+
 			// Valid group is required to share
 			if ($shareWith === null || !$this->groupManager->groupExists($shareWith)) {
 				return new \OC_OCS_Result(null, 404, 'please specify a valid group');
@@ -448,6 +466,10 @@ class Share20OCS {
 	 * @return \OC_OCS_Result
 	 */
 	public function getShares() {
+		if (!$this->shareManager->shareApiEnabled()) {
+			return new \OC_OCS_Result();
+		}
+
 		$sharedWithMe = $this->request->getParam('shared_with_me', null);
 		$reshares = $this->request->getParam('reshares', null);
 		$subfiles = $this->request->getParam('subfiles');
@@ -505,6 +527,10 @@ class Share20OCS {
 	 * @return \OC_OCS_Result
 	 */
 	public function updateShare($id) {
+		if (!$this->shareManager->shareApiEnabled()) {
+			return new \OC_OCS_Result(null, 404, 'Share API is disabled');
+		}
+
 		// Try both our default and our federated provider
 		$share = null;
 

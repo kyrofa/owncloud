@@ -59,6 +59,7 @@ use OC\Lock\DBLockingProvider;
 use OC\Lock\MemcacheLockingProvider;
 use OC\Lock\NoopLockingProvider;
 use OC\Mail\Mailer;
+use OC\Memcache\ArrayCache;
 use OC\Notification\Manager;
 use OC\Security\CertificateManager;
 use OC\Security\CSP\ContentSecurityPolicyManager;
@@ -117,7 +118,8 @@ class Server extends ServerContainer implements IServerContainer {
 				$c->getLogger(),
 				$c->getL10N('core'),
 				new View(),
-				$util
+				$util,
+				new ArrayCache()
 			);
 		});
 
@@ -261,7 +263,8 @@ class Server extends ServerContainer implements IServerContainer {
 			return new \OC\L10N\Factory(
 				$c->getConfig(),
 				$c->getRequest(),
-				$c->getUserSession()
+				$c->getUserSession(),
+				\OC::$SERVERROOT
 			);
 		});
 		$this->registerService('URLGenerator', function (Server $c) {
@@ -312,7 +315,8 @@ class Server extends ServerContainer implements IServerContainer {
 			return new AvatarManager(
 				$c->getUserManager(),
 				$c->getRootFolder(),
-				$c->getL10N('lib')
+				$c->getL10N('lib'),
+				$c->getLogger()
 			);
 		});
 		$this->registerService('Logger', function (Server $c) {
@@ -462,7 +466,8 @@ class Server extends ServerContainer implements IServerContainer {
 					new AppLocator(),
 					$config,
 					$c->getMemCacheFactory(),
-					$appManager
+					$appManager,
+					$c->getTempManager()
 			);
 		});
 		$this->registerService('Request', function ($c) {

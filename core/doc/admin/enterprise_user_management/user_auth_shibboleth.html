@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,10 +7,10 @@
     
     <title>Shibboleth Integration (Enterprise Subscription only) &mdash; ownCloud 9.0 Server Administration Manual 9.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,87 +24,41 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="ownCloud 9.0 Server Administration Manual 9.0 documentation" href="../contents.html" />
     <link rel="up" title="User Management (ES only)" href="index.html" />
-    <link rel="next" title="Enabling Anonymous Uploads with Files Drop (ES Only)" href="../enterprise_files_drop/index.html" />
+    <link rel="next" title="Enterprise File Management (ES Only)" href="../enterprise_file_management/index.html" />
     <link rel="prev" title="User Management (ES only)" href="index.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    console.log("HERE");
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    patchToc($("ul.globaltoc"), 2);
-    patchToc($("ul.localtoc"), 2);
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
 
   </head>
   <body role="document">
-  
 
-<div class="container">
-  <div class="content">
-    <div class="page-header">
-      <h1><a href="../contents.html">ownCloud 9.0 Server Administration Manual</a></h1>
 
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-5 col-md-offset-7">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
     </div>
     
 			<div class="row">
-				<div class="span3">
+				<div class="col-md-3">
 					<div class="sidebar">
-						<div class="well">
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
@@ -143,20 +96,30 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../enterprise_files_drop/index.html">Enabling Anonymous Uploads with Files Drop (ES Only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../enterprise_file_management/index.html">Enterprise File Management (ES Only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_logging/index.html">Enterprise Logging Apps (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_firewall/index.html">Enterprise Firewall (ES only)</a></li>
 </ul>
 
 								</ul>
 							</div>
-						</div>
 					</div>
 				</div>
         
 
-				<div class="span9">
+				<div class="col-md-9">
 					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: User Management (ES only)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; User Manageme...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../enterprise_file_management/index.html" title="Next Chapter: Enterprise File Management (ES Only)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Enterprise Fi... &raquo;</span>
+    </a>
+  </li>
+</ul>
 						
   <div class="section" id="shibboleth-integration-enterprise-subscription-only">
 <h1>Shibboleth Integration (Enterprise Subscription only)<a class="headerlink" href="#shibboleth-integration-enterprise-subscription-only" title="Permalink to this headline">¶</a></h1>
@@ -181,17 +144,18 @@ Providers (IdP), and require case-by-case analysis and installation.</p>
 <p>A successful installation and configuration will populate Apache environment
 variables with at least a unique user id which is then used by the ownCloud
 Shibboleth app to login a user.</p>
+<p>See the <a class="reference external" href="https://github.com/owncloud/documentation/wiki/Shibboleth-example-configurations">documentation Wiki</a> for more configuration examples.</p>
 <div class="section" id="apache-configuration">
 <h3>Apache Configuration<a class="headerlink" href="#apache-configuration" title="Permalink to this headline">¶</a></h3>
 <p>This is an example configuration as installed and operated on a Linux server
-running the Apache Web server. These configurations are highly operating system
+running the Apache 2.4 Web server. These configurations are highly operating system
 specific and require a high degree of customization.</p>
 <p>The ownCloud instance itself is installed in <code class="docutils literal"><span class="pre">/var/www/owncloud/</span></code>.  The
 following aliases are defined in an Apache virtual host directive:</p>
-<div class="highlight-apache"><div class="highlight"><pre><span class="c"># non-Shibboleth access</span>
-<span class="nb">Alias</span> <span class="sx">/owncloud</span> <span class="sx">/var/www/owncloud/</span>
-<span class="c"># for Shibboleth access</span>
-<span class="nb">Alias</span> <span class="sx">/oc-shib</span> <span class="sx">/var/www/owncloud/</span>
+<div class="highlight-python"><div class="highlight"><pre># non-Shibboleth access
+Alias /owncloud /var/www/owncloud/
+# for Shibboleth access
+Alias /oc-shib /var/www/owncloud/
 </pre></div>
 </div>
 <p>Further Shibboleth specific configuration as defined in
@@ -199,94 +163,100 @@ following aliases are defined in an Apache virtual host directive:</p>
 <div class="highlight-python"><div class="highlight"><pre>#
 # Load the Shibboleth module.
 #
-LoadModule mod_shib /usr/lib64/shibboleth/mod_shib_22.so
+LoadModule mod_shib /usr/lib64/shibboleth/mod_shib_24.so
 
 #
 # Ensures handler will be accessible.
 #
 &lt;Location /Shibboleth.sso&gt;
-  Satisfy Any
-  Allow from all
+  AuthType None
+  Require all granted
 &lt;/Location&gt;
 
 #
 # Configure the module for content.
 #
-# Shibboleth is disabled for the following location to allow non
-# Shibboleth webdav access
-&lt;Location ~ &quot;/oc-shib/remote.php/nonshib-webdav&quot;&gt;
-  Satisfy Any
-  Allow from all
-  AuthType None
-  Require all granted
-&lt;/Location&gt;
 
-# Shibboleth is disabled for the following location to allow public link
-# sharing
-&lt;Location ~
-  &quot;/oc-shib/(status.php$
-  |index.php/s/
-  |public.php$
-  |cron.php$
-  |core/img/
-  |index.php/apps/files_sharing/ajax/publicpreview.php$
-  |index.php/apps/files/ajax/upload.php$
-  |apps/files/templates/fileexists.html$
-  |index.php/apps/files/ajax/mimeicon.php$)&quot;&gt;
-  Satisfy Any
-  Allow from all
-  AuthType None
-  Require all granted
-&lt;/Location&gt;
-
-# Shibboleth is disabled for the following location
-# to allow public gallery sharing
-&lt;Location ~
- &quot;/oc-shib/(apps/gallery/templates/slideshow.html$
- |index.php/apps/gallery/ajax/getimages.php
- |index.php/apps/gallery/ajax/thumbnail.php
- |index.php/apps/gallery/ajax/image.php)&quot;&gt;
-  Satisfy Any
-  Allow from all
-  AuthType None
-  Require all granted
-&lt;/Location&gt;
-
-# Shibboleth is disabled for the following location to allow public link
-# sharing
-&lt;Location ~ &quot;/oc-shib/.*\.css&quot;&gt;
-  Satisfy Any
-  Allow from all
-  AuthType None
-  Require all granted
-&lt;/Location&gt;
-
-# Shibboleth is disabled for the following location to allow public link
-# sharing
-&lt;Location ~ &quot;/oc-shib/.*\.js&quot;&gt;
-  Satisfy Any
-  Allow from all
-  AuthType None
-  Require all granted
-&lt;/Location&gt;
-
-# Shibboleth is disabled for the following location to allow public link
-# sharing
-&lt;Location ~ &quot;/oc-shib/.*\.woff &quot;&gt;
-  Satisfy Any
-  Allow from all
-  AuthType None
-  Require all granted
-&lt;/Location&gt;
-
+#
 # Besides the exceptions above this location is now under control of
 # Shibboleth
+#
 &lt;Location /oc-shib&gt;
   AuthType shibboleth
   ShibRequireSession On
   ShibUseHeaders Off
   ShibExportAssertion On
   require valid-user
+&lt;/Location&gt;
+
+#
+# Shibboleth is disabled for the following location to allow non
+# shibboleth webdav access
+#
+&lt;Location ~ &quot;/oc-shib/remote.php/nonshib-webdav&quot;&gt;
+  AuthType None
+  Require all granted
+&lt;/Location&gt;
+
+#
+# Shibboleth is disabled for the following location to allow public link
+# sharing
+#
+&lt;Location ~ \
+&quot;/oc-shib/(status.php$\
+|index.php/s/\
+|public.php$\
+|cron.php$\
+|core/img/\
+|index.php/apps/files_sharing/ajax/publicpreview.php$\
+|index.php/apps/files/ajax/upload.php$\
+|apps/files/templates/fileexists.html$\
+|index.php/apps/files/ajax/mimeicon.php$\
+|index.php/apps/files_sharing/ajax/list.php$\
+|themes/\
+|index.php/apps/files_pdfviewer/\
+|apps/files_pdfviewer/)&quot;&gt;
+  AuthType None
+  Require all granted
+&lt;/Location&gt;
+
+#
+# Shibboleth is disabled for the following location to allow public gallery
+# sharing
+#
+&lt;Location ~ \
+&quot;/oc-shib/(index.php/apps/gallery/s/\
+|index.php/apps/gallery/slideshow$\
+|index.php/apps/gallery/.*\.public)&quot;&gt;
+  AuthType None
+  Require all granted
+&lt;/Location&gt;
+
+#
+# Shibboleth is disabled for the following location to allow public link
+# sharing
+#
+&lt;Location ~ &quot;/oc-shib/.*\.css&quot;&gt;
+  AuthType None
+  Require all granted
+&lt;/Location&gt;
+
+#
+# Shibboleth is disabled for the following location to allow public link
+# sharing
+#
+&lt;Location ~ &quot;/oc-shib/.*\.js&quot;&gt;
+  AuthType None
+  Require all granted
+&lt;/Location&gt;
+
+#
+# Shibboleth is disabled for the following location to allow public link
+# sharing
+#
+&lt;Location ~ &quot;/oc-shib/.*\.woff&quot;&gt;
+  AuthType None
+  Require all granted
 &lt;/Location&gt;
 </pre></div>
 </div>
@@ -310,7 +280,7 @@ Shibboleth session and allows you to login as an administrator and inspect the
 currently available Apache environment variables. Use this mode to set up the
 environment mapping for the other modes, and in case you locked yourself out of
 the system. You can also change the app mode and environment mappings by using
-the <code class="docutils literal"><span class="pre">occ</span></code> command, eg.:</p>
+the <code class="docutils literal"><span class="pre">occ</span></code> command, like this example on Ubuntu Linux:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ sudo -u www-data php occ shibboleth:mode notactive
 $ sudo -u www-data php occ shibboleth:mapping --uid login
 </pre></div>
@@ -352,7 +322,7 @@ user attributes</em></span></p>
 </div>
 <p>In ownCloud 8.1 the Shibboleth environment variable mapping was stored in
 <code class="docutils literal"><span class="pre">apps/user_shibboleth/config.php</span></code>. This file was overwritten on upgrades,
-preventing a seamless upgrade procedure. In ownCloud 8.2 the variables are
+preventing a seamless upgrade procedure. In ownCloud 8.2+ the variables are
 stored in the ownCloud database, making Shibboleth automatically upgradeable.</p>
 </div>
 </div>
@@ -423,8 +393,8 @@ password for a user:</p>
 <li>998 - user unknown</li>
 </ul>
 <p>Example:</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ curl -X DELETE <span class="s2">&quot;https://cloud.example.com/ocs/v1.php/cloud/users/myself@testshib.org/non_shib_password&quot;</span> -u admin:admin
-&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span>?&gt;
+<div class="highlight-python"><div class="highlight"><pre>$ curl -X DELETE &quot;https://cloud.example.com/ocs/v1.php/cloud/users/myself@testshib.org/non_shib_password&quot; -u admin:admin
+&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;ocs&gt;
  &lt;meta&gt;
   &lt;status&gt;ok&lt;/status&gt;
@@ -514,10 +484,21 @@ because <code class="docutils literal"><span class="pre">uid</span></code> colli
 </div>
 
 
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: User Management (ES only)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; User Manageme...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../enterprise_file_management/index.html" title="Next Chapter: Enterprise File Management (ES Only)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Enterprise Fi... &raquo;</span>
+    </a>
+  </li>
+</ul>
 					</div>
 				</div>
 			</div>
-    
+  </main>  
   </div>
 </div>
   </body>

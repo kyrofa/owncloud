@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,10 +7,10 @@
     
     <title>Manual ownCloud Upgrade &mdash; ownCloud 9.0 Server Administration Manual 9.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,87 +24,41 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="ownCloud 9.0 Server Administration Manual 9.0 documentation" href="../contents.html" />
     <link rel="up" title="Maintenance" href="index.html" />
     <link rel="next" title="Restoring ownCloud" href="restore.html" />
     <link rel="prev" title="Upgrading ownCloud with the Updater App" href="update.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    console.log("HERE");
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    patchToc($("ul.globaltoc"), 2);
-    patchToc($("ul.localtoc"), 2);
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
 
   </head>
   <body role="document">
-  
 
-<div class="container">
-  <div class="content">
-    <div class="page-header">
-      <h1><a href="../contents.html">ownCloud 9.0 Server Administration Manual</a></h1>
 
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-5 col-md-offset-7">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
     </div>
     
 			<div class="row">
-				<div class="span3">
+				<div class="col-md-3">
 					<div class="sidebar">
-						<div class="well">
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
@@ -146,24 +99,34 @@
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_server_branding/index.html">Enterprise Server Branding (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_external_storage/index.html">External Storage (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_user_management/index.html">User Management (ES only)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../enterprise_files_drop/index.html">Enabling Anonymous Uploads with Files Drop (ES Only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../enterprise_file_management/index.html">Enterprise File Management (ES Only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_logging/index.html">Enterprise Logging Apps (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_firewall/index.html">Enterprise Firewall (ES only)</a></li>
 </ul>
 
 								</ul>
 							</div>
-						</div>
 					</div>
 				</div>
         
 
-				<div class="span9">
+				<div class="col-md-9">
 					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="update.html" title="Previous Chapter: Upgrading ownCloud with the Updater App"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Upgrading own...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="restore.html" title="Next Chapter: Restoring ownCloud"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Restoring own... &raquo;</span>
+    </a>
+  </li>
+</ul>
 						
   <div class="section" id="manual-owncloud-upgrade">
 <h1>Manual ownCloud Upgrade<a class="headerlink" href="#manual-owncloud-upgrade" title="Permalink to this headline">¶</a></h1>
-<p>Always start by making a fresh backup &amp; disabling all 3rd party apps.</p>
+<p>Always start by making a fresh backup and disabling all 3rd party apps.</p>
 <p>Put your server in maintenance mode. This prevents new logins, locks the
 sessions of logged-in users, and displays a status screen so users know what is
 happening. There are two ways to do this, and the preferred method is to use the
@@ -180,13 +143,11 @@ your HTTP user. This example is for Ubuntu Linux:</p>
 </li>
 <li><p class="first">Download and unpack the latest ownCloud Server release (Archive file) from
 <a class="reference external" href="https://owncloud.org/install/">owncloud.org/install/</a> into an empty directory outside
-of your current installation. For example, if your current ownCloud is
-installed in <code class="docutils literal"><span class="pre">/var/www/owncloud/</span></code> you could create a new directory called
-<code class="docutils literal"><span class="pre">/var/www/owncloud2/</span></code></p>
+of your current installation.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">To unpack your new tarball, run:
-tar xjf owncloud-latest.tar.bz2</p>
+tar xjf owncloud-[version].tar.bz2</p>
 </div>
 </li>
 </ol>
@@ -198,22 +159,21 @@ their accounts on <a class="reference external" href="https://customer.owncloud.
 <ol class="arabic" start="3">
 <li><p class="first">Stop your Web server.</p>
 </li>
-<li><p class="first">Rename or move your current ownCloud directory (named <code class="docutils literal"><span class="pre">owncloud/</span></code> if
-installed using defaults) to another location.</p>
+<li><p class="first">Rename your current ownCloud directory, for example <code class="docutils literal"><span class="pre">owncloud-old</span></code>.</p>
 </li>
-<li><p class="first">This creates a new <code class="docutils literal"><span class="pre">owncloud/</span></code> directory populated with your new server
-files. Copy this directory and its contents to the original location of your
-old server, for example <code class="docutils literal"><span class="pre">/var/www/</span></code>, so that once again you have
-<code class="docutils literal"><span class="pre">/var/www/owncloud</span></code> .</p>
+<li><p class="first">Unpacking the new archive creates a new <code class="docutils literal"><span class="pre">owncloud</span></code> directory populated
+with your new server files. Copy this directory and its contents to the
+original location of your old server, for example <code class="docutils literal"><span class="pre">/var/www/</span></code>, so that
+once again you have <code class="docutils literal"><span class="pre">/var/www/owncloud</span></code>.</p>
 </li>
-<li><p class="first">Copy and paste the <code class="docutils literal"><span class="pre">config.php</span></code> file from your old version of
-ownCloud to your new ownCloud version.</p>
+<li><p class="first">Copy the <code class="docutils literal"><span class="pre">config.php</span></code> file from your old ownCloud directory to your new
+ownCloud directory.</p>
 </li>
 <li><p class="first">If you keep your <code class="docutils literal"><span class="pre">data/</span></code> directory in your <code class="docutils literal"><span class="pre">owncloud/</span></code> directory, copy
-it from your old version of ownCloud to the <code class="docutils literal"><span class="pre">owncloud/</span></code> directory of
-your new ownCloud version. If you keep it outside of <code class="docutils literal"><span class="pre">owncloud/</span></code> then
-you don&#8217;t have to do anything with it, because its location is configured in
-your original <code class="docutils literal"><span class="pre">config.php</span></code>, and none of the upgrade steps touch it.</p>
+it from your old version of ownCloud to your new <code class="docutils literal"><span class="pre">owncloud/</span></code>. If you keep
+it outside of <code class="docutils literal"><span class="pre">owncloud/</span></code> then you don&#8217;t have to do anything with it,
+because its location is configured in your original <code class="docutils literal"><span class="pre">config.php</span></code>, and
+none of the upgrade steps touch it.</p>
 </li>
 <li><p class="first">If you are using 3rd party applications, look in your new <code class="docutils literal"><span class="pre">owncloud/apps/</span></code>
 directory to see if they are there. If not, copy them from your old <code class="docutils literal"><span class="pre">apps/</span></code>
@@ -286,10 +246,21 @@ process this way:</p>
 </div>
 
 
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="update.html" title="Previous Chapter: Upgrading ownCloud with the Updater App"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Upgrading own...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="restore.html" title="Next Chapter: Restoring ownCloud"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Restoring own... &raquo;</span>
+    </a>
+  </li>
+</ul>
 					</div>
 				</div>
 			</div>
-    
+  </main>  
   </div>
 </div>
   </body>

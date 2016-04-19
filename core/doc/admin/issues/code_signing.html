@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,10 +7,10 @@
     
     <title>Code Signing &mdash; ownCloud 9.0 Server Administration Manual 9.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,87 +24,41 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="ownCloud 9.0 Server Administration Manual 9.0 documentation" href="../contents.html" />
     <link rel="up" title="Issues and Troubleshooting" href="index.html" />
     <link rel="next" title="Enterprise Subscription Installation (ES Only)" href="../enterprise_installation/index.html" />
     <link rel="prev" title="General Troubleshooting" href="general_troubleshooting.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    console.log("HERE");
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    patchToc($("ul.globaltoc"), 2);
-    patchToc($("ul.localtoc"), 2);
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
 
   </head>
   <body role="document">
-  
 
-<div class="container">
-  <div class="content">
-    <div class="page-header">
-      <h1><a href="../contents.html">ownCloud 9.0 Server Administration Manual</a></h1>
 
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-5 col-md-offset-7">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
     </div>
     
 			<div class="row">
-				<div class="span3">
+				<div class="col-md-3">
 					<div class="sidebar">
-						<div class="well">
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
@@ -141,24 +94,34 @@
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_server_branding/index.html">Enterprise Server Branding (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_external_storage/index.html">External Storage (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_user_management/index.html">User Management (ES only)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../enterprise_files_drop/index.html">Enabling Anonymous Uploads with Files Drop (ES Only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../enterprise_file_management/index.html">Enterprise File Management (ES Only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_logging/index.html">Enterprise Logging Apps (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_firewall/index.html">Enterprise Firewall (ES only)</a></li>
 </ul>
 
 								</ul>
 							</div>
-						</div>
 					</div>
 				</div>
         
 
-				<div class="span9">
+				<div class="col-md-9">
 					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="general_troubleshooting.html" title="Previous Chapter: General Troubleshooting"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; General Troub...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../enterprise_installation/index.html" title="Next Chapter: Enterprise Subscription Installation (ES Only)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Enterprise Su... &raquo;</span>
+    </a>
+  </li>
+</ul>
 						
   <div class="section" id="code-signing">
 <h1>Code Signing<a class="headerlink" href="#code-signing" title="Permalink to this headline">¶</a></h1>
-<p>ownCloud supports code signing for the core releases, and for ownCloud
+<p id="code-signing-label">ownCloud supports code signing for the core releases, and for ownCloud
 applications. Code signing gives our users an additional layer of security by
 ensuring that nobody other than authorized persons can push updates.</p>
 <p>It also ensures that all upgrades have been executed properly, so that no files
@@ -196,11 +159,15 @@ with a tag of &#8220;Official&#8221; on apps.owncloud.com require code signing.<
 </div>
 </div>
 <div class="section" id="fixing-invalid-code-integrity-messages">
-<h2>Fixing Invalid Code Integrity Messages<a class="headerlink" href="#fixing-invalid-code-integrity-messages" title="Permalink to this headline">¶</a></h2>
+<span id="code-signing-fix-warning-label"></span><h2>Fixing Invalid Code Integrity Messages<a class="headerlink" href="#fixing-invalid-code-integrity-messages" title="Permalink to this headline">¶</a></h2>
 <p>A code integrity error message (&#8220;There were problems with the code integrity
 check. More information…&#8221;) appears in a yellow banner at the top of your
 ownCloud Web interface:</p>
 <img alt="Code integrity warning banner." src="../_images/code-integrity-notification.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The yellow banner is only shown for admin users.</p>
+</div>
 <p>Clicking on this link will take you to your ownCloud admin page, which provides
 the following options:</p>
 <ol class="arabic simple">
@@ -212,7 +179,7 @@ the following options:</p>
 <p>To debug issues caused by the code integrity check click on &#8220;List of invalid
 files…&#8221;, and you will be shown a text document listing the different issues. The
 content of the file will look similar to the following example:</p>
-<div class="highlight-text"><div class="highlight"><pre>Technical information
+<div class="highlight-python"><div class="highlight"><pre>Technical information
 =====================
 The following list covers which files have failed the integrity check. Please read
 the previous linked documentation to learn more about the errors and how to fix
@@ -309,6 +276,10 @@ the application. For other means on how to receive support please take a look at
 </div>
 <div class="section" id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please don&#8217;t modify the mentioned <code class="docutils literal"><span class="pre">signature.json</span></code> itself.</p>
+</div>
 <p>The following errors can be encountered when trying to verify a code signature.</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">INVALID_HASH</span></code><ul>
@@ -325,7 +296,9 @@ edited.</li>
 </li>
 <li><code class="docutils literal"><span class="pre">EXTRA_FILE</span></code><ul>
 <li>The file does not exist in <code class="docutils literal"><span class="pre">signature.json</span></code>. This usually happens when a
-file has been removed and <code class="docutils literal"><span class="pre">signature.json</span></code> has not been updated.</li>
+file has been removed and <code class="docutils literal"><span class="pre">signature.json</span></code> has not been updated. It also
+happens if you have placed additional files in your ownCloud installation
+folder.</li>
 </ul>
 </li>
 <li><code class="docutils literal"><span class="pre">EXCEPTION</span></code><ul>
@@ -360,10 +333,21 @@ others.</li>
 </div>
 
 
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="general_troubleshooting.html" title="Previous Chapter: General Troubleshooting"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; General Troub...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../enterprise_installation/index.html" title="Next Chapter: Enterprise Subscription Installation (ES Only)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Enterprise Su... &raquo;</span>
+    </a>
+  </li>
+</ul>
 					</div>
 				</div>
 			</div>
-    
+  </main>  
   </div>
 </div>
   </body>

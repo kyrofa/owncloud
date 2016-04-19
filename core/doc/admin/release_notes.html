@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,10 +7,10 @@
     
     <title>ownCloud 9.0 Release Notes &mdash; ownCloud 9.0 Server Administration Manual 9.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,86 +24,40 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/bootstrap.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="ownCloud 9.0 Server Administration Manual 9.0 documentation" href="contents.html" />
     <link rel="next" title="What’s New for Admins in ownCloud 9.0" href="whats_new_admin.html" />
     <link rel="prev" title="ownCloud 9.0 Server Administration Manual Introduction" href="index.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    console.log("HERE");
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    patchToc($("ul.globaltoc"), 2);
-    patchToc($("ul.localtoc"), 2);
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
 
   </head>
   <body role="document">
-  
 
-<div class="container">
-  <div class="content">
-    <div class="page-header">
-      <h1><a href="contents.html">ownCloud 9.0 Server Administration Manual</a></h1>
 
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-5 col-md-offset-7">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
     </div>
     
 			<div class="row">
-				<div class="span3">
+				<div class="col-md-3">
 					<div class="sidebar">
-						<div class="well">
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
@@ -183,26 +136,51 @@
 <li class="toctree-l1"><a class="reference internal" href="enterprise_server_branding/index.html">Enterprise Server Branding (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="enterprise_external_storage/index.html">External Storage (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="enterprise_user_management/index.html">User Management (ES only)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="enterprise_files_drop/index.html">Enabling Anonymous Uploads with Files Drop (ES Only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enterprise_file_management/index.html">Enterprise File Management (ES Only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="enterprise_logging/index.html">Enterprise Logging Apps (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="enterprise_firewall/index.html">Enterprise Firewall (ES only)</a></li>
 </ul>
 
 								</ul>
 							</div>
-						</div>
 					</div>
 				</div>
         
 
-				<div class="span9">
+				<div class="col-md-9">
 					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: ownCloud 9.0 Server Administration Manual Introduction"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; ownCloud 9.0 ...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="whats_new_admin.html" title="Next Chapter: What’s New for Admins in ownCloud 9.0"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">What’s New fo... &raquo;</span>
+    </a>
+  </li>
+</ul>
 						
   <div class="section" id="owncloud-version-release-notes">
 <h1>ownCloud 9.0 Release Notes<a class="headerlink" href="#owncloud-version-release-notes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="changes-in-9-0">
 <h2>Changes in 9.0<a class="headerlink" href="#changes-in-9-0" title="Permalink to this headline">¶</a></h2>
-<p>Home folder rule is enforced in the user_ldap application in new ownCloud installations; see <a class="reference internal" href="configuration_user/user_auth_ldap.html"><em>User Authentication with LDAP</em></a>. This affects ownCloud 8.0.10, 8.1.5 and 8.2.0 and up.</p>
+<p>Home folder rule is enforced in the user_ldap application in new ownCloud installations; see
+<a class="reference internal" href="configuration_user/user_auth_ldap.html"><em>User Authentication with LDAP</em></a>. This affects ownCloud 8.0.10, 8.1.5 and 8.2.0 and up.</p>
+<p>The Calendar and Contacts apps have been rewritten and the CalDAV and CardDAV backends of these
+apps were merged into ownCloud core. During the upgrade existing Calendars and Addressbooks
+are automatically migrated. As a fallback for failed upgrades or an option to test a migration
+<code class="docutils literal"><span class="pre">dav:migrate-calendars</span></code> and/or <code class="docutils literal"><span class="pre">dav:migrate-addressbooks</span></code> scripts are available via the
+<code class="docutils literal"><span class="pre">occ</span></code> command. See <a class="reference internal" href="configuration_server/occ_command.html"><em>Using the occ Command</em></a>.</p>
+<p>Updates on systems with large datasets will take longer, due to the addition of checksums to the
+oC database. See <a class="reference external" href="https://github.com/owncloud/core/issues/22747">https://github.com/owncloud/core/issues/22747</a>.</p>
+<p>Linux packages are available from our <a class="reference external" href="https://download.owncloud.org/download/repositories/stable/owncloud/">official download repository</a> .
+New in 9.0: split packages. <code class="docutils literal"><span class="pre">owncloud</span></code> installs ownCloud plus dependencies, including Apache
+and PHP. <code class="docutils literal"><span class="pre">owncloud-files</span></code> installs only ownCloud. This is useful for custom LAMP stacks, and
+allows you to install your own LAMP apps and versions without packaging conflicts with ownCloud.
+See <a class="reference internal" href="installation/linux_installation.html"><em>Preferred Linux Installation Method</em></a>.</p>
+<p>New option for the ownCloud admin to enable or disable sharing on individual external mountpoints
+(see <a class="reference internal" href="configuration_files/external_storage_configuration_gui.html#external-storage-mount-options-label"><span>Mount Options</span></a>). Sharing on such mountpoints is disabled by default.</p>
 </div>
 <div class="section" id="changes-in-8-2">
 <h2>Changes in 8.2<a class="headerlink" href="#changes-in-8-2" title="Permalink to this headline">¶</a></h2>
@@ -232,7 +210,9 @@ in this <a class="reference external" href="https://owncloud.org/blog/upgrading-
 </div>
 <div class="section" id="changes-in-8-1">
 <h2>Changes in 8.1<a class="headerlink" href="#changes-in-8-1" title="Permalink to this headline">¶</a></h2>
-<p>Use APCu only if available in version 4.0.6 and higher. If you install an older version, you will see a <code class="docutils literal"><span class="pre">APCu</span> <span class="pre">below</span> <span class="pre">version</span> <span class="pre">4.0.6</span> <span class="pre">is</span> <span class="pre">installed,</span> <span class="pre">for</span> <span class="pre">stability</span> <span class="pre">and</span> <span class="pre">performance</span> <span class="pre">reasons</span> <span class="pre">we</span> <span class="pre">recommend</span> <span class="pre">to</span> <span class="pre">update</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">newer</span> <span class="pre">APCu</span> <span class="pre">version</span></code> warning on your ownCloud admin page.</p>
+<p>Use APCu only if available in version 4.0.6 and higher. If you install an older version,
+you will see a <code class="docutils literal"><span class="pre">APCu</span> <span class="pre">below</span> <span class="pre">version</span> <span class="pre">4.0.6</span> <span class="pre">is</span> <span class="pre">installed,</span> <span class="pre">for</span> <span class="pre">stability</span> <span class="pre">and</span> <span class="pre">performance</span>
+<span class="pre">reasons</span> <span class="pre">we</span> <span class="pre">recommend</span> <span class="pre">to</span> <span class="pre">update</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">newer</span> <span class="pre">APCu</span> <span class="pre">version</span></code> warning on your ownCloud admin page.</p>
 <p>SMB external storage now based on <code class="docutils literal"><span class="pre">php5-libsmbclient</span></code>, which must be downloaded
 from the ownCloud software repositories (<a class="reference external" href="https://software.opensuse.org/download.html?project=isv%3AownCloud%3Acommunity%3A8.1&amp;package=php5-libsmbclient">installation instructions</a>).</p>
 <p>&#8220;Download from link&#8221; feature has been removed.</p>
@@ -263,7 +243,7 @@ root certificates file. The system root certificate bundle will not be used
 anymore for most requests.</p>
 <p>When you upgrade from ownCloud 8.0, with encryption enabled, to 8.1, you must
 enable the new encryption backend and migrate your encryption keys. See
-<a class="reference internal" href="configuration_files/encryption_configuration.html"><em>Encryption Configuration</em></a></p>
+<a class="reference internal" href="configuration_files/encryption_configuration.html#upgrading-encryption-label"><span>Encryption migration to ownCloud 8.0</span></a>.</p>
 <p>Encryption can no longer be disabled in ownCloud 8.1. It is planned to re-add
 this feature to the command line client for a future release.</p>
 <p>It is not recommended to upgrade encryption-enabled systems from ownCloud Server 8.0
@@ -303,15 +283,15 @@ manually.</p>
 </div>
 <div class="section" id="remote-federated-cloud-share-cannot-be-reshared-with-local-users">
 <h3>Remote Federated Cloud Share Cannot be Reshared With Local Users<a class="headerlink" href="#remote-federated-cloud-share-cannot-be-reshared-with-local-users" title="Permalink to this headline">¶</a></h3>
-<p>When you mount a Federated Cloud share from a remote ownCloud server, you cannot re-share it with your local ownCloud users. (See <a class="reference internal" href="configuration_files/federated_cloud_sharing_configuration.html"><em>Configuring Federation Sharing</em></a> to learn more about federated cloud sharing)</p>
+<p>When you mount a Federated Cloud share from a remote ownCloud server, you cannot re-share it with
+your local ownCloud users. (See <a class="reference internal" href="configuration_files/federated_cloud_sharing_configuration.html"><em>Configuring Federation Sharing</em></a>
+to learn more about federated cloud sharing)</p>
 </div>
 <div class="section" id="manually-migrate-encryption-keys-after-upgrade">
 <h3>Manually Migrate Encryption Keys after Upgrade<a class="headerlink" href="#manually-migrate-encryption-keys-after-upgrade" title="Permalink to this headline">¶</a></h3>
 <p>If you are using the Encryption app and upgrading from older versions of
-ownCloud to ownCloud 8.0, you must manually migrate your encryption keys with
-the <em>occ</em> command after the upgrade is complete, like this example for CentOS:
-<em>sudo -u apache php occ encryption:migrate</em> You must run <em>occ</em> as your HTTP
-user. See <a class="reference internal" href="configuration_server/occ_command.html"><em>Using the occ Command</em></a> to learn more about <em>occ</em></p>
+ownCloud to ownCloud 8.0, you must manually migrate your encryption keys.
+See <a class="reference internal" href="configuration_files/encryption_configuration.html#upgrading-encryption-label"><span>Encryption migration to ownCloud 8.0</span></a>.</p>
 </div>
 <div class="section" id="windows-server-not-supported">
 <h3>Windows Server Not Supported<a class="headerlink" href="#windows-server-not-supported" title="Permalink to this headline">¶</a></h3>
@@ -533,10 +513,21 @@ or PostgreSQL) to operate correctly.</p>
 </div>
 
 
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: ownCloud 9.0 Server Administration Manual Introduction"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; ownCloud 9.0 ...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="whats_new_admin.html" title="Next Chapter: What’s New for Admins in ownCloud 9.0"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">What’s New fo... &raquo;</span>
+    </a>
+  </li>
+</ul>
 					</div>
 				</div>
 			</div>
-    
+  </main>  
   </div>
 </div>
   </body>

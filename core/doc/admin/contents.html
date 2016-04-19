@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,10 +7,10 @@
     
     <title>Table of Contents &mdash; ownCloud 9.0 Server Administration Manual 9.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,85 +24,39 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/bootstrap.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="ownCloud 9.0 Server Administration Manual 9.0 documentation" href="#" />
     <link rel="next" title="ownCloud 9.0 Server Administration Manual Introduction" href="index.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    console.log("HERE");
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    patchToc($("ul.globaltoc"), 2);
-    patchToc($("ul.localtoc"), 2);
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
 
   </head>
   <body role="document">
-  
 
-<div class="container">
-  <div class="content">
-    <div class="page-header">
-      <h1><a href="#">ownCloud 9.0 Server Administration Manual</a></h1>
 
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-5 col-md-offset-7">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
     </div>
     
 			<div class="row">
-				<div class="span3">
+				<div class="col-md-3">
 					<div class="sidebar">
-						<div class="well">
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
@@ -130,20 +83,26 @@
 <li class="toctree-l1"><a class="reference internal" href="enterprise_server_branding/index.html">Enterprise Server Branding (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="enterprise_external_storage/index.html">External Storage (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="enterprise_user_management/index.html">User Management (ES only)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="enterprise_files_drop/index.html">Enabling Anonymous Uploads with Files Drop (ES Only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enterprise_file_management/index.html">Enterprise File Management (ES Only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="enterprise_logging/index.html">Enterprise Logging Apps (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="enterprise_firewall/index.html">Enterprise Firewall (ES only)</a></li>
 </ul>
 
 								</ul>
 							</div>
-						</div>
 					</div>
 				</div>
         
 
-				<div class="span9">
+				<div class="col-md-9">
 					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="next">
+    <a href="index.html" title="Next Chapter: ownCloud 9.0 Server Administration Manual Introduction"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">ownCloud 9.0 ... &raquo;</span>
+    </a>
+  </li>
+</ul>
 						
   <div class="section" id="table-of-contents">
 <h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
@@ -208,7 +167,10 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="whats_new_admin.html">What&#8217;s New for Admins in ownCloud 9.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whats_new_admin.html">What&#8217;s New for Admins in ownCloud 9.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="whats_new_admin.html#enterprise-only">Enterprise Only</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="installation/system_requirements.html">System Requirements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="installation/system_requirements.html#memory">Memory</a></li>
@@ -229,7 +191,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="installation/linux_installation.html">Preferred Linux Installation Method</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="installation/linux_installation.html#installation-quick-start">Installation Quick Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/linux_installation.html#changes-in-9-0">Changes in 9.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/linux_installation.html#repos-stable-or-version">Repos: Stable or Version?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/linux_installation.html#installing-owncloud-enterprise-subscription">Installing ownCloud Enterprise Subscription</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/linux_installation.html#downgrading-not-supported">Downgrading Not Supported</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/linux_installation.html#additional-installation-guides-and-notes">Additional Installation Guides and Notes</a></li>
@@ -245,13 +208,17 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="installation/command_line_installation.html">Installing ownCloud From the Command Line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation/apps_management_installation.html">Installing and Managing Apps</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="installation/apps_management_installation.html#enterprise-subscription-supported-apps">Enterprise Subscription Supported Apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/apps_management_installation.html#supported-apps">Supported Apps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/apps_management_installation.html#viewing-enabled-apps">Viewing Enabled Apps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/apps_management_installation.html#re-enabling-contacts-and-calendar-apps">Re-enabling Contacts and Calendar Apps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/apps_management_installation.html#managing-apps">Managing Apps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/apps_management_installation.html#adding-third-party-apps">Adding Third Party Apps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/apps_management_installation.html#using-custom-app-directories">Using Custom App Directories</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/apps_management_installation.html#using-your-own-appstore">Using Your Own Appstore</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation/apps_supported.html">Supported Apps in ownCloud</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation/apps_supported.html#agpl-apps">AGPL Apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/apps_supported.html#enterprise-only-apps">Enterprise-Only Apps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="installation/source_installation.html">Manual Installation on Linux</a><ul>
@@ -291,21 +258,6 @@
 <li class="toctree-l3"><a class="reference internal" href="installation/selinux_configuration.html#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="installation/nginx_configuration.html">Nginx Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="installation/nginx_configuration.html#suppressing-log-messages">Suppressing Log Messages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/nginx_configuration.html#javascript-js-or-css-css-files-not-served-properly">JavaScript (.js) or CSS (.css) files not served properly</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="installation/ucs_installation.html">Univention Corporate Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="installation/ucs_installation.html#pre-configuration">Pre configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/ucs_installation.html#installation">Installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/ucs_installation.html#postconfiguration-optional">Postconfiguration (optional)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/ucs_installation.html#using-owncloud">Using ownCloud</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="installation/hiawatha_configuration.html">Hiawatha Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/yaws_configuration.html">Yaws Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/macos_installation.html">Mac OS X</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_server/index.html">ownCloud Server Configuration</a><ul>
@@ -316,9 +268,10 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/security_setup_warnings.html#the-test-with-getenv-path-only-returns-an-empty-response">The test with getenv(&#8220;PATH&#8221;) only returns an empty response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/security_setup_warnings.html#the-strict-transport-security-http-header-is-not-configured">The &#8220;Strict-Transport-Security&#8221; HTTP header is not configured</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/security_setup_warnings.html#dev-urandom-is-not-readable-by-php">/dev/urandom is not readable by PHP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_server/security_setup_warnings.html#your-web-server-is-not-yet-set-up-properly-to-allow-file-synchronization">Your web server is not yet set up properly to allow file synchronization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_server/security_setup_warnings.html#your-web-server-is-not-yet-set-up-properly-to-allow-file-synchronization">Your Web server is not yet set up properly to allow file synchronization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/security_setup_warnings.html#outdated-nss-openssl-version">Outdated NSS / OpenSSL version</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_server/security_setup_warnings.html#your-web-server-is-not-set-up-properly-to-resolve-well-known-caldav-or-well-known-carddav">Your web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_server/security_setup_warnings.html#your-web-server-is-not-set-up-properly-to-resolve-well-known-caldav-or-well-known-carddav">Your Web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_server/security_setup_warnings.html#some-files-have-not-passed-the-integrity-check">Some files have not passed the integrity check</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_server/occ_command.html">Using the occ Command</a><ul>
@@ -327,13 +280,18 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#apps-commands">Apps Commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#background-jobs-selector">Background Jobs Selector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#config-commands">Config Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#dav-commands">Dav Commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#database-conversion">Database Conversion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#encryption">Encryption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#federation-sync">Federation Sync</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#file-operations">File Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#files-external">Files External</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#integrity-check">Integrity Check</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#l10n-create-javascript-translation-files-for-apps">l10n, Create Javascript Translation Files for Apps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#ldap-commands">LDAP Commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#logging-commands">Logging Commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#maintenance-commands">Maintenance Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#security">Security</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#shibboleth-modes-enterprise-only">Shibboleth Modes (Enterprise only)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#trashbin">Trashbin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/occ_command.html#user-commands">User Commands</a></li>
@@ -543,16 +501,7 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage_configuration_gui.html#configuration-file">Configuration File</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="configuration_files/external_storage_configuration.html">Configuring External Storage (Configuration File)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage_configuration.html#using-self-signed-certificates">Using self-signed certificates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage_configuration.html#adding-files-to-external-storages">Adding files to external storages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage_configuration.html#example">Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage_configuration.html#priorities">Priorities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage_configuration.html#configuring-temporary-disk-space-needs">Configuring Temporary Disk Space Needs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage_configuration.html#backends">Backends</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage_configuration.html#external-storage-password-management">External Storage Password Management</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration_files/external_storage_configuration.html">Configuring External Storage (Configuration File)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_files/external_storage/auth_mechanisms.html">External Storage Authentication mechanisms</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage/auth_mechanisms.html#special-mechanisms">Special Mechanisms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/external_storage/auth_mechanisms.html#password-based-mechanisms">Password-based Mechanisms</a></li>
@@ -570,6 +519,8 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/encryption_configuration.html#disabling-encryption">Disabling Encryption</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/encryption_configuration.html#files-not-encrypted">Files Not Encrypted</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/encryption_configuration.html#ldap-and-other-external-user-back-ends">LDAP and Other External User Back-ends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/encryption_configuration.html#encryption-migration-to-owncloud-8-0">Encryption migration to ownCloud 8.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/encryption_configuration.html#encryption-migration-to-owncloud-8-1">Encryption migration to ownCloud 8.1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_files/files_locking_transactional.html">Transactional File Locking</a></li>
@@ -617,6 +568,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="maintenance/upgrade.html">How to Upgrade Your ownCloud Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="maintenance/upgrade.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="maintenance/upgrade.html#encryption-migration-from-oc-7-0-to-8-0-and-8-0-to-8-1">Encryption migration from oC 7.0 to 8.0 and 8.0 to 8.1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="maintenance/package_upgrade.html">Upgrade ownCloud From Packages</a><ul>
@@ -715,25 +667,16 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="enterprise_external_storage/index.html">External Storage (ES only)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="enterprise_external_storage/jive_configuration.html">Jive Integration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/jive_configuration.html#configuration">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/jive_configuration.html#use-cases">Use Cases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/jive_configuration.html#configuring-the-jive-app">Configuring the Jive app</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="enterprise_external_storage/enterprise_only_auth.html">Enterprise-Only Authentication Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enterprise_external_storage/ldap_home_connector_configuration.html">LDAP Home Connector</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/ldap_home_connector_configuration.html#mount-home-directory-in-ubuntu">Mount home directory in Ubuntu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/ldap_home_connector_configuration.html#configure-owncloud">Configure ownCloud</a></li>
-<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/ldap_home_connector_configuration.html#configure-the-ldap-server">Configure the LDAP server</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="enterprise_external_storage/s3_swift_as_primary_object_store_configuration.html">Configuring S3 and OpenStack Swift Objects as Primary Storage</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/s3_swift_as_primary_object_store_configuration.html#implications">Implications</a></li>
-<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/s3_swift_as_primary_object_store_configuration.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/ldap_home_connector_configuration.html#mount-home-directory">Mount Home Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/ldap_home_connector_configuration.html#configure-the-ldap-home-connector">Configure the LDAP Home Connector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/ldap_home_connector_configuration.html#configure-the-ldap-server">Configure the LDAP Server</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="enterprise_external_storage/sharepoint-integration_configuration.html">Configuring SharePoint Integration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/sharepoint-integration_configuration.html#enabling-the-sharepoint-plugin">Enabling the SharePoint Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/sharepoint-integration_configuration.html#creating-a-sharepoint-mount">Creating a Sharepoint Mount</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/sharepoint-integration_configuration.html#enabling-users">Enabling Users</a></li>
 <li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/sharepoint-integration_configuration.html#note">Note</a></li>
 <li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/sharepoint-integration_configuration.html#troubleshooting">Troubleshooting</a></li>
 </ul>
@@ -743,6 +686,17 @@
 <li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/windows-network-drive_configuration.html#additional-installation-steps">Additional Installation Steps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/windows-network-drive_configuration.html#creating-a-new-share">Creating a New Share</a></li>
 <li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/windows-network-drive_configuration.html#personal-smb-mounts">Personal SMB Mounts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="enterprise_external_storage/s3_swift_as_primary_object_store_configuration.html">Configuring S3 and OpenStack Swift Objects as Primary Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/s3_swift_as_primary_object_store_configuration.html#implications">Implications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/s3_swift_as_primary_object_store_configuration.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="enterprise_external_storage/jive_configuration.html">Jive Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/jive_configuration.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/jive_configuration.html#use-cases">Use Cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_external_storage/jive_configuration.html#configuring-the-jive-app">Configuring the Jive app</a></li>
 </ul>
 </li>
 </ul>
@@ -759,10 +713,17 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="enterprise_files_drop/index.html">Enabling Anonymous Uploads with Files Drop (ES Only)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="enterprise_files_drop/files_drop.html">Enabling Anonymous Uploads with Files Drop (ES Only)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="enterprise_files_drop/files_drop.html#setting-up-the-files-drop-app">Setting Up the Files Drop App</a></li>
-<li class="toctree-l3"><a class="reference internal" href="enterprise_files_drop/files_drop.html#using-the-files-drop-app">Using the Files Drop App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enterprise_file_management/index.html">Enterprise File Management (ES Only)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="enterprise_file_management/files_drop.html">Enabling Anonymous Uploads with Files Drop (ES Only)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_file_management/files_drop.html#setting-up-the-files-drop-app">Setting Up the Files Drop App</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_file_management/files_drop.html#using-the-files-drop-app">Using the Files Drop App</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="enterprise_file_management/files_tagging.html">Advanced File Tagging With the Workflow App (ES only)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_file_management/files_tagging.html#tag-manager">Tag Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_file_management/files_tagging.html#automatic-tagging">Automatic Tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_file_management/files_tagging.html#retention">Retention</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enterprise_file_management/files_tagging.html#retention-engines">Retention Engines</a></li>
 </ul>
 </li>
 </ul>
@@ -787,10 +748,17 @@
 </div>
 
 
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="next">
+    <a href="index.html" title="Next Chapter: ownCloud 9.0 Server Administration Manual Introduction"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">ownCloud 9.0 ... &raquo;</span>
+    </a>
+  </li>
+</ul>
 					</div>
 				</div>
 			</div>
-    
+  </main>  
   </div>
 </div>
   </body>

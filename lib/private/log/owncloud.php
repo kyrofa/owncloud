@@ -76,24 +76,36 @@ class OC_Log_Owncloud {
 		} catch (Exception $e) {
 			$timezone = new DateTimeZone('UTC');
 		}
-		$time = DateTime::createFromFormat("U.u", number_format(microtime(true), 4, ".", ""), $timezone);
+		$time = DateTime::createFromFormat("U.u", number_format(microtime(true), 4, ".", ""));
 		if ($time === false) {
 			$time = new DateTime(null, $timezone);
+		} else {
+			// apply timezone if $time is created from UNIX timestamp
+			$time->setTimezone($timezone);
 		}
 		$request = \OC::$server->getRequest();
 		$reqId = $request->getId();
 		$remoteAddr = $request->getRemoteAddress();
 		// remove username/passwords from URLs before writing the to the log file
 		$time = $time->format($format);
-		$minLevel=min($config->getValue( "loglevel", \OCP\Util::WARN ), \OCP\Util::ERROR);
-		if($minLevel == \OCP\Util::DEBUG) {
-			$url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '--';
-			$method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : '--';
-			$entry = compact('reqId', 'remoteAddr', 'app', 'message', 'level', 'time', 'method', 'url');
+		$url = ($request->getRequestUri() !== '') ? $request->getRequestUri() : '--';
+		$method = is_string($request->getMethod()) ? $request->getMethod() : '--';
+		if(\OC::$server->getConfig()->getSystemValue('installed', false)) {
+			$user = (\OC_User::getUser()) ? \OC_User::getUser() : '--';
+		} else {
+			$user = '--';
 		}
-		else {
-			$entry = compact('reqId', 'remoteAddr', 'app', 'message', 'level', 'time');
-		}
+		$entry = compact(
+			'reqId',
+			'remoteAddr',
+			'app',
+			'message',
+			'level',
+			'time',
+			'method',
+			'url',
+			'user'
+		);
 		$entry = json_encode($entry);
 		$handle = @fopen(self::$logFile, 'a');
 		@chmod(self::$logFile, 0640);

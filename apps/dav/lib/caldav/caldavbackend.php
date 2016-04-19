@@ -138,6 +138,7 @@ class CalDavBackend extends AbstractBackend implements SyncSupport, Subscription
 	 * @return array
 	 */
 	function getCalendarsForUser($principalUri) {
+		$principalUriOriginal = $principalUri;
 		$principalUri = $this->convertPrincipal($principalUri, true);
 		$fields = array_values($this->propertyMap);
 		$fields[] = 'id';
@@ -184,7 +185,7 @@ class CalDavBackend extends AbstractBackend implements SyncSupport, Subscription
 		$stmt->closeCursor();
 
 		// query for shared calendars
-		$principals = $this->principalBackend->getGroupMembership($principalUri);
+		$principals = $this->principalBackend->getGroupMembership($principalUriOriginal, true);
 		$principals[]= $principalUri;
 
 		$fields = array_values($this->propertyMap);
@@ -194,6 +195,7 @@ class CalDavBackend extends AbstractBackend implements SyncSupport, Subscription
 		$fields[] = 'a.components';
 		$fields[] = 'a.principaluri';
 		$fields[] = 'a.transparent';
+		$fields[] = 's.access';
 		$query = $this->db->getQueryBuilder();
 		$result = $query->select($fields)
 			->from('dav_shares', 's')
@@ -221,6 +223,7 @@ class CalDavBackend extends AbstractBackend implements SyncSupport, Subscription
 				'{' . Plugin::NS_CALDAV . '}supported-calendar-component-set' => new SupportedCalendarComponentSet($components),
 				'{' . Plugin::NS_CALDAV . '}schedule-calendar-transp' => new ScheduleCalendarTransp($row['transparent']?'transparent':'opaque'),
 				'{' . \OCA\DAV\DAV\Sharing\Plugin::NS_OWNCLOUD . '}owner-principal' => $row['principaluri'],
+				'{' . \OCA\DAV\DAV\Sharing\Plugin::NS_OWNCLOUD . '}read-only' => (int)$row['access'] === Backend::ACCESS_READ,
 			];
 
 			foreach($this->propertyMap as $xmlName=>$dbName) {
@@ -815,9 +818,9 @@ class CalDavBackend extends AbstractBackend implements SyncSupport, Subscription
 	function getCalendarObjectByUID($principalUri, $uid) {
 
 		$query = $this->db->getQueryBuilder();
-		$query->select([$query->createFunction('c.`uri` AS `calendaruri`'), $query->createFunction('co.`uri` AS `objecturi`')])
+		$query->selectAlias('c.uri', 'calendaruri')->selectAlias('co.uri', 'objecturi')
 			->from('calendarobjects', 'co')
-			->leftJoin('co', 'calendars', 'c', 'co.`calendarid` = c.`id`')
+			->leftJoin('co', 'calendars', 'c', $query->expr()->eq('co.calendarid', 'c.id'))
 			->where($query->expr()->eq('c.principaluri', $query->createNamedParameter($principalUri)))
 			->andWhere($query->expr()->eq('co.uid', $query->createNamedParameter($uid)));
 
@@ -1294,7 +1297,7 @@ class CalDavBackend extends AbstractBackend implements SyncSupport, Subscription
 		if (!$componentType) {
 			throw new \Sabre\DAV\Exception\BadRequest('Calendar objects must have a VJOURNAL, VEVENT or VTODO component');
 		}
-		if ($componentType === 'VEVENT') {
+		if ($componentType === 'VEVENT' && $component->DTSTART) {
 			$firstOccurence = $component->DTSTART->getDateTime()->getTimeStamp();
 			// Finding the last occurence is a bit harder
 			if (!isset($component->RRULE)) {
@@ -1333,7 +1336,7 @@ class CalDavBackend extends AbstractBackend implements SyncSupport, Subscription
 				'etag' => md5($calendarData),
 				'size' => strlen($calendarData),
 				'componentType' => $componentType,
-				'firstOccurence' => $firstOccurence,
+				'firstOccurence' => is_null($firstOccurence) ? null : max(0, $firstOccurence),
 				'lastOccurence'  => $lastOccurence,
 				'uid' => $uid,
 		];

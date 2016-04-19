@@ -148,9 +148,6 @@ class Storage extends DAV implements ISharedStorage {
 		if (!$storage) {
 			$storage = $this;
 		}
-		if(!$this->remoteIsOwnCloud()) {
-			return parent::getScanner($path, $storage);
-		}
 		if (!isset($this->scanner)) {
 			$this->scanner = new Scanner($storage);
 		}
@@ -253,8 +250,8 @@ class Storage extends DAV implements ISharedStorage {
 	 */
 	private function testRemoteUrl($url) {
 		$cache = $this->memcacheFactory->create('files_sharing_remote_url');
-		if($result = $cache->get($url)) {
-			return (bool)$result;
+		if($cache->hasKey($url)) {
+			return (bool)$cache->get($url);
 		}
 
 		$result = file_get_contents($url);
@@ -270,7 +267,7 @@ class Storage extends DAV implements ISharedStorage {
 	 *
 	 * @return bool
 	 */
-	private function remoteIsOwnCloud() {
+	public function remoteIsOwnCloud() {
 		if(defined('PHPUNIT_RUN') || !$this->testRemoteUrl($this->getRemote() . '/status.php')) {
 			return false;
 		}

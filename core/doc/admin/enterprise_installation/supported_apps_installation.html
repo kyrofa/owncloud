@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,10 +7,10 @@
     
     <title>Supported ownCloud Enterprise Subscription Apps &mdash; ownCloud 9.0 Server Administration Manual 9.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,87 +24,41 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="ownCloud 9.0 Server Administration Manual 9.0 documentation" href="../contents.html" />
     <link rel="up" title="Enterprise Subscription Installation (ES Only)" href="index.html" />
     <link rel="next" title="License Keys" href="license_keys_installation.html" />
     <link rel="prev" title="Installing &amp; Upgrading ownCloud Enterprise Subscription" href="linux_installation.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    console.log("HERE");
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    patchToc($("ul.globaltoc"), 2);
-    patchToc($("ul.localtoc"), 2);
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
 
   </head>
   <body role="document">
-  
 
-<div class="container">
-  <div class="content">
-    <div class="page-header">
-      <h1><a href="../contents.html">ownCloud 9.0 Server Administration Manual</a></h1>
 
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-5 col-md-offset-7">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
     </div>
     
 			<div class="row">
-				<div class="span3">
+				<div class="col-md-3">
 					<div class="sidebar">
-						<div class="well">
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
@@ -137,53 +90,34 @@
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_server_branding/index.html">Enterprise Server Branding (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_external_storage/index.html">External Storage (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_user_management/index.html">User Management (ES only)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../enterprise_files_drop/index.html">Enabling Anonymous Uploads with Files Drop (ES Only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../enterprise_file_management/index.html">Enterprise File Management (ES Only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_logging/index.html">Enterprise Logging Apps (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_firewall/index.html">Enterprise Firewall (ES only)</a></li>
 </ul>
 
 								</ul>
 							</div>
-						</div>
 					</div>
 				</div>
         
 
-				<div class="span9">
+				<div class="col-md-9">
 					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="linux_installation.html" title="Previous Chapter: Installing & Upgrading ownCloud Enterprise Subscription"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Installing & ...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="license_keys_installation.html" title="Next Chapter: License Keys"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">License Keys &raquo;</span>
+    </a>
+  </li>
+</ul>
 						
   <div class="section" id="supported-owncloud-enterprise-subscription-apps">
 <h1>Supported ownCloud Enterprise Subscription Apps<a class="headerlink" href="#supported-owncloud-enterprise-subscription-apps" title="Permalink to this headline">¶</a></h1>
-<p>See <a class="reference internal" href="../installation/apps_management_installation.html"><em>Installing and Managing Apps</em></a> for instructions on
-managing ownCloud apps.</p>
-<p>These applications are supported in ownCloud Enterprise Edition. The first name
-on each line is the name of the application as it appears on the Apps page in
-your ownCloud Web GUI, and the name in parentheses is the filename as it
-appears in your <code class="docutils literal"><span class="pre">owncloud/apps</span></code> directory.</p>
-<p>Activity (activity)</p>
-<p>Antivirus app for files (files_antivirus)</p>
-<p>Deleted Files (files_trashbin)</p>
-<p>Encryption (encryption)</p>
-<p>Enterprise License Key (enterprise_key)</p>
-<p>External Storage Support (files_external)</p>
-<p>External user support (user_external)</p>
-<p>Files (files)</p>
-<p>File Firewall (firewall)</p>
-<p>File Locking (files_locking)</p>
-<p>File Shared access logging app (files_sharing_log)</p>
-<p>First Run Wizard (firstrunwizard)</p>
-<p>LDAP Home Connector (files_ldap_home)</p>
-<p>LDAP user and group backend (user_ldap)</p>
-<p>Log audit info (admin_audit)</p>
-<p>Mail Template Editor (templateeditor)</p>
-<p>Provisioning API (provisioning_api)</p>
-<p>Share Files (files_sharing)</p>
-<p>SharePoint (sharepoint)</p>
-<p>Shibboleth user backend (user_shibboleth)</p>
-<p>Text Editor (files_texteditor)</p>
-<p>Versions (files_versions)</p>
-<p>User backend using remote HTTP servers (user_webdavauth)</p>
-<p>Windows Network Drive (windows_network_drive)</p>
+<p>See <a class="reference internal" href="../installation/apps_supported.html"><em>Supported Apps in ownCloud</em></a> for a list of supported apps.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">3rd party and unsupported apps must be disabled before performing a
@@ -193,10 +127,21 @@ upgrade is complete re-enable them.</p>
 </div>
 
 
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="linux_installation.html" title="Previous Chapter: Installing & Upgrading ownCloud Enterprise Subscription"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Installing & ...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="license_keys_installation.html" title="Next Chapter: License Keys"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">License Keys &raquo;</span>
+    </a>
+  </li>
+</ul>
 					</div>
 				</div>
 			</div>
-    
+  </main>  
   </div>
 </div>
   </body>

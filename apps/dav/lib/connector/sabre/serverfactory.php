@@ -26,6 +26,7 @@
 
 namespace OCA\DAV\Connector\Sabre;
 
+use OCA\DAV\Files\BrowserErrorPagePlugin;
 use OCP\Files\Mount\IMountManager;
 use OCP\IConfig;
 use OCP\IDBConnection;
@@ -110,8 +111,13 @@ class ServerFactory {
 		if($this->request->isUserAgent([
 				'/WebDAVFS/',
 				'/Microsoft Office OneNote 2013/',
+				'/Microsoft-WebDAV-MiniRedir/',
 		])) {
 			$server->addPlugin(new \OCA\DAV\Connector\Sabre\FakeLockerPlugin());
+		}
+
+		if (BrowserErrorPagePlugin::isBrowserRequest($this->request)) {
+			$server->addPlugin(new BrowserErrorPagePlugin());
 		}
 
 		// wait with registering these until auth is handled and the filesystem is setup
@@ -136,6 +142,12 @@ class ServerFactory {
 
 			if($this->userSession->isLoggedIn()) {
 				$server->addPlugin(new \OCA\DAV\Connector\Sabre\TagsPlugin($objectTree, $this->tagManager));
+				$server->addPlugin(new \OCA\DAV\Connector\Sabre\SharesPlugin(
+					$objectTree,
+					$this->userSession,
+					$userFolder,
+					\OC::$server->getShareManager()
+				));
 				$server->addPlugin(new \OCA\DAV\Connector\Sabre\CommentPropertiesPlugin(\OC::$server->getCommentsManager(), $this->userSession));
 				$server->addPlugin(new \OCA\DAV\Connector\Sabre\FilesReportPlugin(
 					$objectTree,

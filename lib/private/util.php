@@ -726,7 +726,8 @@ class OC_Util {
 			'classes' => array(
 				'ZipArchive' => 'zip',
 				'DOMDocument' => 'dom',
-				'XMLWriter' => 'XMLWriter'
+				'XMLWriter' => 'XMLWriter',
+				'XMLReader' => 'XMLReader',
 			),
 			'functions' => [
 				'xml_parser_create' => 'libxml',
@@ -824,6 +825,14 @@ class OC_Util {
 			$errors[] = array(
 				'error' => $l->t('mbstring.func_overload is set to "%s" instead of the expected value "0"', [$iniWrapper->getString('mbstring.func_overload')]),
 				'hint' => $l->t('To fix this issue set <code>mbstring.func_overload</code> to <code>0</code> in your php.ini')
+			);
+		}
+
+		if(function_exists('xml_parser_create') &&
+			version_compare('2.7.0', LIBXML_DOTTED_VERSION) === 1) {
+			$errors[] = array(
+				'error' => $l->t('libxml2 2.7.0 is at least required. Currently %s is installed.', [LIBXML_DOTTED_VERSION]),
+				'hint' => $l->t('To fix this issue update your libxml2 version and restart your web server.')
 			);
 		}
 

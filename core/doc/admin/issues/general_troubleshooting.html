@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,10 +7,10 @@
     
     <title>General Troubleshooting &mdash; ownCloud 9.0 Server Administration Manual 9.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,87 +24,41 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="ownCloud 9.0 Server Administration Manual 9.0 documentation" href="../contents.html" />
     <link rel="up" title="Issues and Troubleshooting" href="index.html" />
     <link rel="next" title="Code Signing" href="code_signing.html" />
     <link rel="prev" title="Issues and Troubleshooting" href="index.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    console.log("HERE");
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    patchToc($("ul.globaltoc"), 2);
-    patchToc($("ul.localtoc"), 2);
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
 
   </head>
   <body role="document">
-  
 
-<div class="container">
-  <div class="content">
-    <div class="page-header">
-      <h1><a href="../contents.html">ownCloud 9.0 Server Administration Manual</a></h1>
 
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-5 col-md-offset-7">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
     </div>
     
 			<div class="row">
-				<div class="span3">
+				<div class="col-md-3">
 					<div class="sidebar">
-						<div class="well">
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
@@ -144,20 +97,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_server_branding/index.html">Enterprise Server Branding (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_external_storage/index.html">External Storage (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_user_management/index.html">User Management (ES only)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../enterprise_files_drop/index.html">Enabling Anonymous Uploads with Files Drop (ES Only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../enterprise_file_management/index.html">Enterprise File Management (ES Only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_logging/index.html">Enterprise Logging Apps (ES only)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../enterprise_firewall/index.html">Enterprise Firewall (ES only)</a></li>
 </ul>
 
 								</ul>
 							</div>
-						</div>
 					</div>
 				</div>
         
 
-				<div class="span9">
+				<div class="col-md-9">
 					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: Issues and Troubleshooting"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Issues and Tr...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="code_signing.html" title="Next Chapter: Code Signing"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Code Signing &raquo;</span>
+    </a>
+  </li>
+</ul>
 						
   <div class="section" id="general-troubleshooting">
 <h1>General Troubleshooting<a class="headerlink" href="#general-troubleshooting" title="Permalink to this headline">¶</a></h1>
@@ -177,8 +140,7 @@ to typical mistakes or frequently occurring issues</p>
 freenode.net, also accessible via <a class="reference external" href="http://webchat.freenode.net/?channels=owncloud">webchat</a></li>
 </ul>
 <p>Please understand that all these channels essentially consist of users like you
-helping each other out. Consider helping others out where you can, to
-contribute
+helping each other out. Consider helping others out where you can, to contribute
 back for the help you get. This is the only way to keep a community like
 ownCloud healthy and sustainable!</p>
 <p>If you are using ownCloud in a business or otherwise large scale deployment,
@@ -212,17 +174,9 @@ any issues you need to raise the log level to <code class="docutils literal"><sp
 file, or to <strong>Everything</strong> on your ownCloud Admin page. Please see
 <a class="reference internal" href="../configuration_server/logging_configuration.html"><em>Logging Configuration</em></a> for more information on
 these log levels.</p>
-<p>Some logging - for example JavaScript console logging - needs manually editing
-the configuration file. Edit <code class="file docutils literal"><span class="pre">config/config.php</span></code> and add
-<code class="docutils literal"><span class="pre">define('DEBUG',</span>
-<span class="pre">true);</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;?php
-define(&#39;DEBUG&#39;,true);
-$CONFIG = array (
-    ... configuration goes here ...
-);
-</pre></div>
-</div>
+<p>Some logging - for example JavaScript console logging - needs debugging
+enabled. Edit <code class="file docutils literal"><span class="pre">config/config.php</span></code> and change <code class="docutils literal"><span class="pre">'debug'</span> <span class="pre">=&gt;</span> <span class="pre">false,</span></code> to
+<code class="docutils literal"><span class="pre">'debug'</span> <span class="pre">=&gt;</span> <span class="pre">true,</span></code> Be sure to change it back when you are finished.</p>
 <p>For JavaScript issues you will also need to view the javascript console. All
 major browsers have developer tools for viewing the console, and you
 usually access them by pressing F12. For Firefox we recommend to installing
@@ -256,8 +210,8 @@ security risk to expose such sensitive data.</p>
 </div>
 <div class="section" id="debugging-sync-issues">
 <h3>Debugging Sync Issues<a class="headerlink" href="#debugging-sync-issues" title="Permalink to this headline">¶</a></h3>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
 <p class="last">The data directory on the server is exclusive to ownCloud and must
 not be modified manually.</p>
 </div>
@@ -361,13 +315,6 @@ correctly)</li>
 <li>X-Sendfile (causing broken downloads if not configured correctly)</li>
 </ul>
 <ol class="arabic simple" start="3">
-<li>Mac OS X server</li>
-</ol>
-<ul class="simple">
-<li>mod_auth_apple</li>
-<li>com.apple.webapp.webdavsharing</li>
-</ul>
-<ol class="arabic simple" start="4">
 <li>PHP</li>
 </ol>
 <ul class="simple">
@@ -416,8 +363,8 @@ running ownCloud at the document root of your Web server the correct URL is:</p>
 <p><code class="docutils literal"><span class="pre">https://example.com/owncloud/remote.php/dav</span></code></p>
 <p>For the first case the <code class="file docutils literal"><span class="pre">.htaccess</span></code> file shipped with ownCloud should do
 this work for your when running Apache. You only need to make sure that your
-Web server is using this file. When running nginx please refer to the
-<a class="reference internal" href="../installation/nginx_configuration.html#nginx-configuration-example"><span>Nginx Configuration</span></a> example.</p>
+Web server is using this file. When running NGINX please refer to
+<a class="reference external" href="https://github.com/owncloud/documentation/wiki/NGINX-Configuration">NGINX configuration</a></p>
 <p>If your ownCloud instance is installed in a subfolder called <code class="docutils literal"><span class="pre">owncloud</span></code> and
 you&#8217;re running Apache create or edit the <code class="file docutils literal"><span class="pre">.htaccess</span></code> file within the
 document root of your Web server and add the following lines:</p>
@@ -458,10 +405,21 @@ first.</p>
 </div>
 
 
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: Issues and Troubleshooting"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Issues and Tr...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="code_signing.html" title="Next Chapter: Code Signing"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Code Signing &raquo;</span>
+    </a>
+  </li>
+</ul>
 					</div>
 				</div>
 			</div>
-    
+  </main>  
   </div>
 </div>
   </body>

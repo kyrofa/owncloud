@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,10 +7,10 @@
     
     <title>Using the Contacts App &mdash; ownCloud 9.0 User Manual 9.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,87 +24,41 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="ownCloud 9.0 User Manual 9.0 documentation" href="../contents.html" />
     <link rel="up" title="Contacts &amp; Calendar" href="index.html" />
     <link rel="next" title="Using the Calendar App" href="calendar.html" />
     <link rel="prev" title="Contacts &amp; Calendar" href="index.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    console.log("HERE");
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    patchToc($("ul.globaltoc"), 2);
-    patchToc($("ul.localtoc"), 2);
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
 
   </head>
   <body role="document">
-  
 
-<div class="container">
-  <div class="content">
-    <div class="page-header">
-      <h1><a href="../contents.html">ownCloud 9.0 User Manual</a></h1>
 
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-5 col-md-offset-7">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
     </div>
     
 			<div class="row">
-				<div class="span3">
+				<div class="col-md-3">
 					<div class="sidebar">
-						<div class="well">
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
@@ -136,24 +89,33 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../documents.html">Collaborative Document Editing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bookmarks.html">Using the Bookmarks App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting Your Preferences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">External Storage</a></li>
 </ul>
 
 								</ul>
 							</div>
-						</div>
 					</div>
 				</div>
         
 
-				<div class="span9">
+				<div class="col-md-9">
 					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: Contacts & Calendar"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Contacts & Ca...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="calendar.html" title="Next Chapter: Using the Calendar App"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Using the Cal... &raquo;</span>
+    </a>
+  </li>
+</ul>
 						
   <div class="section" id="using-the-contacts-app">
 <h1>Using the Contacts App<a class="headerlink" href="#using-the-contacts-app" title="Permalink to this headline">¶</a></h1>
-<p>The Contacts app is not enabled by default in ownCloud 8 and needs to
+<p>The Contacts app is not enabled by default in ownCloud 9.0 and needs to
 be enabled seperately. It is also not a supported core app. You may ask
 your ownCloud server admin to enable it, and if you are
 your own admin consult the <a class="reference external" href="https://doc.owncloud.org/server/9.0/admin_manual/installation/apps_management_installation.html">Installation &gt; Installing and Managing Apps</a>
@@ -161,9 +123,8 @@ section of the <a class="reference external" href="https://doc.owncloud.org/serv
 <p>The ownCloud Contacts app is similar to other mobile contact applications, but
 with more functionality.  When you first access the Contacts app, a default
 address book becomes available.</p>
-<div class="figure" id="id2">
-<img alt="../_images/contacts_empty.png" src="../_images/contacts_empty.png" />
-<p class="caption"><span class="caption-text"><strong>Contacts app (empty)</strong></span></p>
+<div class="figure">
+<img alt="Contacts app main screen." src="../_images/contacts_empty.png" />
 </div>
 <p>In the Apps Information field for the Contacts app, you can choose to create a
 new contact or a new group.  This field also enables you to filter your contacts
@@ -184,18 +145,16 @@ based on grouped or ungrouped contacts.</p>
 <li>At the bottom of the Contacts app information field, locate the gear button.</li>
 </ol>
 <blockquote>
-<div><div class="figure" id="id3">
-<img alt="../_images/contact_bottombar.png" src="../_images/contact_bottombar.png" />
-<p class="caption"><span class="caption-text"><strong>Contact settings gear button</strong></span></p>
+<div><div class="figure">
+<img alt="Contact settings gear button." src="../_images/contact_bottombar.png" />
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li>Click the gear button. The Contacts app upload field opens.</li>
 </ol>
 <blockquote>
-<div><div class="figure" id="id4">
-<img alt="../_images/contact_uploadbutton.png" src="../_images/contact_uploadbutton.png" />
-<p class="caption"><span class="caption-text"><strong>Contacts app upload field</strong></span></p>
+<div><div class="figure">
+<img alt="Contacts app upload field." src="../_images/contact_uploadbutton.png" />
 </div>
 </div></blockquote>
 <p>3. Choose an address book to which you want to import contacts by clicking the
@@ -237,13 +196,11 @@ one time.</p>
 <li>Once you have selected the appropriate files, click the <cite>Open`</cite> button.</li>
 </ol>
 <blockquote>
-<div><div class="figure" id="id5">
-<img alt="../_images/contact_vcfpick.jpg" src="../_images/contact_vcfpick.jpg" />
-<p class="caption"><span class="caption-text"><strong>Selecting VCF files</strong></span></p>
-<div class="legend">
-The interface automatically places your contacts into ownCloud.</div>
+<div><div class="figure">
+<img alt="Selecting VCF files." src="../_images/contact_vcfpick.jpg" />
 </div>
 </div></blockquote>
+<p>The interface automatically places your contacts into ownCloud.</p>
 </div>
 <div class="section" id="creating-contacts-manually">
 <h3>Creating Contacts Manually<a class="headerlink" href="#creating-contacts-manually" title="Permalink to this headline">¶</a></h3>
@@ -256,7 +213,7 @@ The interface automatically places your contacts into ownCloud.</div>
 </ol>
 <blockquote>
 <div><div class="figure">
-<img alt="../_images/contact_new.png" src="../_images/contact_new.png" />
+<img alt="Addin a new contact." src="../_images/contact_new.png" />
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
@@ -316,9 +273,8 @@ specifying a contact method as &#8220;preferred.&#8221;</p>
 <div class="section" id="defining-a-contact-avatar">
 <h3>Defining a Contact Avatar<a class="headerlink" href="#defining-a-contact-avatar" title="Permalink to this headline">¶</a></h3>
 <p>By default, new contacts receive a letter avatar (picture) of &#8220;U&#8221; (for &#8220;User&#8221;).</p>
-<div class="figure" id="id6">
-<img alt="../_images/contact_picture_default.png" src="../_images/contact_picture_default.png" />
-<p class="caption"><span class="caption-text"><strong>Contact picture (default)</strong></span></p>
+<div class="figure">
+<img alt="Default contact picture." src="../_images/contact_picture_default.png" />
 </div>
 <p>When you specify the name of a contact, the avatar reflects the name by adopting
 the first letter of the name you provide.  For example, if you were to specify
@@ -326,9 +282,8 @@ the name of &#8220;Frederick,&#8221; the avatar would dynamically change to &#82
 contact.  If you provide multiple contacts with the same name, or with names
 that start with the same first letter, the avatar uses the same letter but
 changes color to indicate the difference.</p>
-<div class="figure" id="id7">
-<img alt="../_images/contact_picture.png" src="../_images/contact_picture.png" />
-<p class="caption"><span class="caption-text"><strong>Contact picture (dynamic change)</strong></span></p>
+<div class="figure">
+<img alt="New contact picture." src="../_images/contact_picture.png" />
 </div>
 </div>
 <div class="section" id="customizing-an-avatar">
@@ -349,9 +304,8 @@ in the ownCloud directory, selecting it, and clicking <code class="docutils lite
 <h3>Cropping an Avatar Image<a class="headerlink" href="#cropping-an-avatar-image" title="Permalink to this headline">¶</a></h3>
 <p>After you have selected an image for your contact, the Contacts app enables you
 to crop the picture.</p>
-<div class="figure" id="id8">
-<img alt="../_images/contact_crop.jpg" src="../_images/contact_crop.jpg" />
-<p class="caption"><span class="caption-text"><strong>Cropping contact image</strong></span></p>
+<div class="figure">
+<img alt="Cropping contact image." src="../_images/contact_crop.jpg" />
 </div>
 <p>To crop the image:</p>
 <ol class="arabic simple">
@@ -370,9 +324,8 @@ used for the contact.</div></blockquote>
 field provides access to the Contact app settings. This field shows all
 available address books, certain options for each address book, and enables you
 to create new address books.</p>
-<div class="figure" id="id9">
-<img alt="../_images/contacts_settings.png" src="../_images/contacts_settings.png" />
-<p class="caption"><span class="caption-text"><strong>Contacts settings</strong></span></p>
+<div class="figure">
+<img alt="Contacts settings." src="../_images/contacts_settings.png" />
 </div>
 <p>The Contacts settings enables you to share, export, edit, and delete address
 books.</p>
@@ -389,9 +342,8 @@ books.</p>
 </ol>
 <blockquote>
 <div><p>A field opens requesting you to enter a display name for the new address book.</p>
-<div class="figure" id="id10">
-<img alt="../_images/contact_address_book_add.png" src="../_images/contact_address_book_add.png" />
-<p class="caption"><span class="caption-text"><strong>Adding an address book</strong></span></p>
+<div class="figure">
+<img alt="Adding an address book" src="../_images/contact_address_book_add.png" />
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
@@ -478,10 +430,21 @@ and <a class="reference external" href="https://doc.owncloud.org/server/9.0/admi
 </div>
 
 
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: Contacts & Calendar"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Contacts & Ca...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="calendar.html" title="Next Chapter: Using the Calendar App"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Using the Cal... &raquo;</span>
+    </a>
+  </li>
+</ul>
 					</div>
 				</div>
 			</div>
-    
+  </main>  
   </div>
 </div>
   </body>

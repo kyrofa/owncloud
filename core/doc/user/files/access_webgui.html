@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,10 +7,10 @@
     
     <title>Accessing your Files Using the ownCloud Web Interface &mdash; ownCloud 9.0 User Manual 9.0 documentation</title>
     
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,87 +24,41 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="ownCloud 9.0 User Manual 9.0 documentation" href="../contents.html" />
     <link rel="up" title="Files &amp; Synchronization" href="index.html" />
     <link rel="next" title="Accessing ownCloud Files Using WebDAV" href="access_webdav.html" />
     <link rel="prev" title="Files &amp; Synchronization" href="index.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
-
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
-        }
-      });
-    };
-
-    console.log("HERE");
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    patchToc($("ul.globaltoc"), 2);
-    patchToc($("ul.localtoc"), 2);
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
 
   </head>
   <body role="document">
-  
 
-<div class="container">
-  <div class="content">
-    <div class="page-header">
-      <h1><a href="../contents.html">ownCloud 9.0 User Manual</a></h1>
 
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-5 col-md-offset-7">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
     </div>
     
 			<div class="row">
-				<div class="span3">
+				<div class="col-md-3">
 					<div class="sidebar">
-						<div class="well">
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
@@ -119,6 +72,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Files &amp; Synchronization</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="">Accessing your Files Using the ownCloud Web Interface</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#tagging-files">Tagging Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-player">Video Player</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#file-controls">File Controls</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#previewing-files">Previewing Files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#navigating-inside-your-owncloud">Navigating Inside Your ownCloud</a></li>
@@ -145,41 +100,67 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pim/index.html">Contacts &amp; Calendar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../documents.html">Collaborative Document Editing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bookmarks.html">Using the Bookmarks App</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting Your Preferences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">External Storage</a></li>
 </ul>
 
 								</ul>
 							</div>
-						</div>
 					</div>
 				</div>
         
 
-				<div class="span9">
+				<div class="col-md-9">
 					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: Files & Synchronization"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Files & Synch...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="access_webdav.html" title="Next Chapter: Accessing ownCloud Files Using WebDAV"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Accessing own... &raquo;</span>
+    </a>
+  </li>
+</ul>
 						
   <div class="section" id="accessing-your-files-using-the-owncloud-web-interface">
 <h1>Accessing your Files Using the ownCloud Web Interface<a class="headerlink" href="#accessing-your-files-using-the-owncloud-web-interface" title="Permalink to this headline">¶</a></h1>
-<p>You can access your ownCloud files with the ownCloud web interface and create,
+<p>You can access your ownCloud files with the ownCloud Web interface and create,
 preview, edit, delete, share, and re-share files. Your ownCloud administrator
 has the option to disable these features, so if any of them are missing on your
 system ask your server administrator.</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../_images/files_page.png"><img alt="The Files view screen." src="../_images/files_page.png" style="width: 754.5px; height: 386.25px;" /></a>
+<a class="reference internal image-reference" href="../_images/files_page.png"><img alt="The Files view screen." src="../_images/files_page.png" style="width: 487.5px; height: 274.5px;" /></a>
 </div>
 <div class="section" id="tagging-files">
 <h2>Tagging Files<a class="headerlink" href="#tagging-files" title="Permalink to this headline">¶</a></h2>
 <p>New for 9.0: file tagging. You can assign tags to files. To create tags, open a
 file to the Details view. Then type your tags. To enter more than one tag press
-the return key after creating each tag.</p>
+the return key after creating each tag. All tags are system tags, and are
+shared by all users on your ownCloud server.</p>
 <div class="figure">
 <img alt="Creating file tags." src="../_images/files_page-7.png" />
 </div>
 <p>Then use the Tags filter on the left sidebar to filter files by tags.</p>
 <div class="figure">
-<img alt="Creating file tags." src="../_images/files_page-8.png" />
+<img alt="Viewing file tags." src="../_images/files_page-8.png" />
+</div>
+</div>
+<div class="section" id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
+<p>New for 9.0: Comments. Use the Details view to add and read comments on any
+file or folder. Comments are visible to everyone who has access to the file.</p>
+<div class="figure">
+<img alt="Creating and viewing comments." src="../_images/file_menu_comments_2.png" />
+</div>
+</div>
+<div class="section" id="video-player">
+<h2>Video Player<a class="headerlink" href="#video-player" title="Permalink to this headline">¶</a></h2>
+<p>You can play videos in ownCloud with the Video Player app by simply clicking on
+the file.</p>
+<div class="figure">
+<img alt="Watching a movie." src="../_images/video_player_2.png" />
 </div>
 </div>
 <div class="section" id="file-controls">
@@ -345,10 +326,21 @@ Federated Cloud shares.</p>
 </div>
 
 
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: Files & Synchronization"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Files & Synch...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="access_webdav.html" title="Next Chapter: Accessing ownCloud Files Using WebDAV"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Accessing own... &raquo;</span>
+    </a>
+  </li>
+</ul>
 					</div>
 				</div>
 			</div>
-    
+  </main>  
   </div>
 </div>
   </body>

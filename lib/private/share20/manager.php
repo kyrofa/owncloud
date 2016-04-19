@@ -23,6 +23,7 @@
 
 namespace OC\Share20;
 
+use OC\Files\Mount\MoveableMount;
 use OCP\Files\IRootFolder;
 use OCP\Files\NotFoundException;
 use OCP\IUserManager;
@@ -215,8 +216,19 @@ class Manager implements IManager {
 			throw new \InvalidArgumentException('A share requires permissions');
 		}
 
+		/*
+		 * Quick fix for #23536
+		 * Non moveable mount points do not have update and delete permissions
+		 * while we 'most likely' do have that on the storage.
+		 */
+		$permissions = $share->getNode()->getPermissions();
+		$mount = $share->getNode()->getMountPoint();
+		if (!($mount instanceof MoveableMount)) {
+			$permissions |= \OCP\Constants::PERMISSION_DELETE | \OCP\Constants::PERMISSION_UPDATE;
+		}
+
 		// Check that we do not share with more permissions than we have
-		if ($share->getPermissions() & ~$share->getNode()->getPermissions()) {
+		if ($share->getPermissions() & ~$permissions) {
 			$message_t = $this->l->t('Cannot increase permissions of %s', [$share->getNode()->getPath()]);
 			throw new GenericShareException($message_t, $message_t, 404);
 		}
@@ -361,6 +373,11 @@ class Manager implements IManager {
 	 * @throws \Exception
 	 */
 	protected function groupCreateChecks(\OCP\Share\IShare $share) {
+		// Verify group shares are allowed
+		if (!$this->allowGroupSharing()) {
+			throw new \Exception('Group sharing is now allowed');
+		}
+
 		// Verify if the user can share with this group
 		if ($this->shareWithGroupMembersOnly()) {
 			$sharedBy = $this->userManager->get($share->getSharedBy());
@@ -1111,6 +1128,13 @@ class Manager implements IManager {
 		return $this->config->getAppValue('core', 'shareapi_only_share_with_group_members', 'no') === 'yes';
 	}
 
+	/**
+	 * Check if users can share with groups
+	 * @return bool
+	 */
+	public function allowGroupSharing() {
+		return $this->config->getAppValue('core', 'shareapi_allow_group_sharing', 'yes') === 'yes';
+	}
 
 	/**
 	 * Copied from \OC_Util::isSharingDisabledForUser

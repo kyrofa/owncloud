@@ -35,6 +35,7 @@ namespace OC\Files\Storage;
 
 use GuzzleHttp\Exception\RequestException;
 use Icewind\Streams\IteratorDirectory;
+use Icewind\Streams\RetryWrapper;
 
 set_include_path(get_include_path().PATH_SEPARATOR.
 	\OC_App::getAppPath('files_external').'/3rdparty/google-api-php-client/src');
@@ -265,7 +266,8 @@ class Google extends \OC\Files\Storage\Common {
 				foreach ($children->getItems() as $child) {
 					$name = $child->getTitle();
 					// Check if this is a Google Doc i.e. no extension in name
-					if (empty($child->getFileExtension())
+					$extension = $child->getFileExtension();
+					if (empty($extension)
 						&& $child->getMimeType() !== self::FOLDER
 					) {
 						$name .= '.'.$this->getGoogleDocExtension($child->getMimeType());
@@ -440,10 +442,10 @@ class Google extends \OC\Files\Storage\Common {
 						// the library's service doesn't support streaming, so we use Guzzle instead
 						$client = \OC::$server->getHTTPClientService()->newClient();
 						try {
-							$tmpFile = \OC::$server->getTempManager()->getTemporaryFile($ext);
-							$client->get($downloadUrl, [
+							$response = $client->get($downloadUrl, [
 								'headers' => $httpRequest->getRequestHeaders(),
-								'save_to' => $tmpFile,
+								'stream' => true,
+								'verify' => __DIR__ . '/../3rdparty/google-api-php-client/src/Google/IO/cacerts.pem',
 							]);
 						} catch (RequestException $e) {
 							if(!is_null($e->getResponse())) {
@@ -457,7 +459,8 @@ class Google extends \OC\Files\Storage\Common {
 							}
 						}
 
-						return fopen($tmpFile, 'r');
+						$handle = $response->getBody();
+						return RetryWrapper::wrap($handle);
 					}
 				}
 				return false;
@@ -489,18 +492,27 @@ class Google extends \OC\Files\Storage\Common {
 			$path = self::$tempFiles[$tmpFile];
 			$parentFolder = $this->getDriveFile(dirname($path));
 			if ($parentFolder) {
-				// TODO Research resumable upload
 				$mimetype = \OC::$server->getMimeTypeDetector()->detect($tmpFile);
-				$data = file_get_contents($tmpFile);
 				$params = array(
-					'data' => $data,
 					'mimeType' => $mimetype,
 					'uploadType' => 'media'
 				);
 				$result = false;
+
+				$chunkSizeBytes = 10 * 1024 * 1024;
+
+				$useChunking = false;
+				$size = filesize($tmpFile);
+				if ($size > $chunkSizeBytes) {
+					$useChunking = true;
+				} else {
+					$params['data'] = file_get_contents($tmpFile);
+				}
+
 				if ($this->file_exists($path)) {
 					$file = $this->getDriveFile($path);
-					$result = $this->service->files->update($file->getId(), $file, $params);
+					$this->client->setDefer($useChunking);
+					$request = $this->service->files->update($file->getId(), $file, $params);
 				} else {
 					$file = new \Google_Service_Drive_DriveFile();
 					$file->setTitle(basename($path));
@@ -508,8 +520,46 @@ class Google extends \OC\Files\Storage\Common {
 					$parent = new \Google_Service_Drive_ParentReference();
 					$parent->setId($parentFolder->getId());
 					$file->setParents(array($parent));
-					$result = $this->service->files->insert($file, $params);
+					$this->client->setDefer($useChunking);
+					$request = $this->service->files->insert($file, $params);
 				}
+
+				if ($useChunking) {
+					// Create a media file upload to represent our upload process.
+					$media = new \Google_Http_MediaFileUpload(
+						$this->client,
+						$request,
+						'text/plain',
+						null,
+						true,
+						$chunkSizeBytes
+					);
+					$media->setFileSize($size);
+
+					// Upload the various chunks. $status will be false until the process is
+					// complete.
+					$status = false;
+					$handle = fopen($tmpFile, 'rb');
+					while (!$status && !feof($handle)) {
+						$chunk = fread($handle, $chunkSizeBytes);
+						$status = $media->nextChunk($chunk);
+					}
+
+					// The final value of $status will be the data from the API for the object
+					// that has been uploaded.
+					$result = false;
+					if ($status !== false) {
+						$result = $status;
+					}
+
+					fclose($handle);
+				} else {
+					$result = $request;
+				}
+
+				// Reset to the client to execute requests immediately in the future.
+				$this->client->setDefer(false);
+
 				if ($result) {
 					$this->setDriveFile($path, $result);
 				}
